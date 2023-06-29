@@ -1,0 +1,212 @@
+<div class="main">
+    <div class="container-liquid">
+      <div class="top-header">
+        <div class="insideheader">
+          <h4 class="subheader">Accordian <span class="btncmp">Component</span></h4>
+        </div>
+        <div class="button-sec">  
+          <button class="backbutton" (click)="backwindow()">Back</button>
+          <button class="backbutton" data-bs-toggle="modal" data-bs-target="#exampleModal2">Edit</button>
+        </div>
+      </div>
+      <div class="accordion" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='1'">
+          <h2 class="accordion-header active" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" type="button" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              {{accordiandata.title11}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              {{accordiandata.description11}}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='2'">
+          <h2 class="accordion-header active" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              {{accordiandata.title21}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              {{accordiandata.description22}}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='2'">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              {{accordiandata.title22}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+              {{accordiandata.description22}}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='3'">
+          <h2 class="accordion-header active" id="panelsStayOpen-headingOne">
+            <button class="accordion-button" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+              {{accordiandata.title31}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingOne">
+            <div class="accordion-body">
+              {{accordiandata.description31}}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='3'">
+          <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+            <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+              {{accordiandata.title32}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingTwo">
+            <div class="accordion-body">
+              {{accordiandata.description32}}
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" *ngIf="accordiandata.nolayout=='3'">
+          <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+            <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+              {{accordiandata.title33}}
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingThree">
+            <div class="accordion-body">
+              {{accordiandata.description33}}
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" *ngIf="accordiandata.nolayout=='4'">
+        <h2 class="accordion-header active" id="panelsStayOpen-headingOne">
+          <button class="accordion-button" type="button" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            {{accordiandata.title1}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingOne">
+          <div class="accordion-body">
+            {{accordiandata.description1}}
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item" *ngIf="accordiandata.nolayout=='4'">
+        <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+          <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            {{accordiandata.title2}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingTwo">
+          <div class="accordion-body">
+            {{accordiandata.description2}}
+        </div>
+        </div>
+      </div>
+      <div class="accordion-item" *ngIf="accordiandata.nolayout=='4'">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            {{accordiandata.title3}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">
+            {{accordiandata.description3}}
+        </div>
+      </div>
+    </div>
+      <div class="accordion-item" *ngIf="accordiandata.nolayout=='4'">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+          <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            {{accordiandata.title4}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">
+            {{accordiandata.description4}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" *ngIf="accordiandata.nolayout=='5'">
+      <h2 class="accordion-header active" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          {{accordiandata.title51}}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          {{accordiandata.description51}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" *ngIf="accordiandata.nolayout=='5'">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          {{accordiandata.title52}}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+          {{accordiandata.description52}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item" *ngIf="accordiandata.nolayout=='5'">
+      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+        <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          {{accordiandata.title53}}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+          {{accordiandata.description53}}
+      </div>
+    </div>
+  </div>
+    <div class="accordion-item" *ngIf="accordiandata.nolayout=='5'">
+      <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+        <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}"  type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          {{accordiandata.title54}}
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+          {{accordiandata.description54}}
+      </div>
+    </div>
+  </div>
+    <div class="accordion-item" *ngIf="accordiandata.nolayout=='5'">
+        <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+          <button class="accordion-button collapsed" [ngStyle]="{'backgroundColor':bgcolor,'color':color}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            {{accordiandata.title55}}
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionPanelsStayOpenExample" aria-labelledby="panelsStayOpen-headingFive">
+          <div class="accordion-body">
+            {{accordiandata.description55}}
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class=" formbutton modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel7"
+  aria-hidden="true">
+  <div class="accordianmodal modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Accordian</h4>
+        <button class="clearbtn"  aria-label="Header Update modal close"  #myModalClose1 data-bs-dismiss="modal">
+          <img [src]="closeicon" class="closeicon">  
+      </button>
+      </div> 
+      <app-editaccordian (onclose)="close()"></app-editaccordian>
+      <!-- <app-editheader (onclose)="close()"></app-editheader>  -->
+    </div>
+  </div>
+</div>
+
