@@ -34,7 +34,19 @@
             </div>
         </header> -->
 
-          <p>drawer works!</p>
+          <!-- <p>drawer works!</p> -->
+
+          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+
+            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasTopLabel">Offcanvas top</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                ...idhar aayega content
+            </div>
+            </div>
 
           <ul class="list-inline">
             <li (click)="openhtml()"><button [class]="htmlcontent">HTML</button></li>
@@ -64,7 +76,7 @@
                     <img [src]="closeicon" class="closeicon">  
                 </button>
             </div>
-            <!-- <app-editheader (onclose)="close()"></app-editheader> -->
+            <app-editdrawer (onclose)="close()"></app-editdrawer>
         </div>
     </div>
 </div>
