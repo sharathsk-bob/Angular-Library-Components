@@ -24,6 +24,7 @@ import { DynamictabsComponent } from './Components/dynamictabs/dynamictabs.compo
 import { ImagesliderComponent } from './Components/imageslider/imageslider.component';
 import { LoginComponent } from './Components/login/login.component';
 import { BreakpointComponent } from './Components/breakpoint/breakpoint.component';
+import { DrawerComponent } from './Components/drawer/drawer.component';
 
 
 const routes: Routes = [
@@ -52,7 +53,8 @@ const routes: Routes = [
   {path : "component/dynamics", component:DynamictabsComponent},
   {path : "component/imageslider", component:ImagesliderComponent},
   {path : "component/login&signup", component:LoginComponent},
-  {path : "component/breakpoint", component:BreakpointComponent}
+  {path : "component/breakpoint", component:BreakpointComponent},
+  {path : "component/drawer", component:DrawerComponent}
 
 ];
 

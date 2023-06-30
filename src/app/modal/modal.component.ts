@@ -25,6 +25,7 @@ constructor(private router: Router){}
   @ViewChild('myModalClose12') modalClose12:any;
   @ViewChild('myModalClose13') modalClose13:any;
 
+  @ViewChild('myModalClose16') modalClose16:any;
   
 
   array = [
@@ -42,7 +43,8 @@ constructor(private router: Router){}
     {id:12,name:"Tabs"},
     {id:13,name:"LogIn/SignUp"},
     {id:14,name:"Image Slider"},
-    {id:15,name:"BreakPoint"}
+    {id:15,name:"BreakPoint"},
+    {id:16,name:"Drawer"}
 ];
 
 subheading = "This components help to create and customize the";
@@ -67,7 +69,7 @@ close(){
   this.modalClose12.nativeElement.click();
   this.modalClose13.nativeElement.click();
 
-
+  this.modalClose16.nativeElement.click();
   console.log(">>>>>>>>>>>>>>>>");
 }
 

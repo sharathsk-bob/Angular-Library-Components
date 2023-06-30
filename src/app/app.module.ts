@@ -74,6 +74,9 @@ import { BreakpointComponent } from './Components/breakpoint/breakpoint.componen
 import { EditbreakpointComponent } from './FormComponents/editbreakpoint/editbreakpoint.component';
 import { EditloginComponent } from './FormComponents/editlogin/editlogin.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DrawerComponent } from './Components/drawer/drawer.component';
+import { DrawerformComponent } from './FormComponents/drawerform/drawerform.component';
+import { EditdrawerComponent } from './FormComponents/editdrawer/editdrawer.component';
 
 
 @NgModule({
@@ -138,7 +141,10 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     BreakpointComponent,
     EditbreakpointComponent,
-    EditloginComponent
+    EditloginComponent,
+    DrawerComponent,
+    DrawerformComponent,
+    EditdrawerComponent
    
   ],
   imports: [

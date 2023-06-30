@@ -109,6 +109,12 @@
                                 <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal015">Create</button>
                             </div>
+                            <div class="button-sec" *ngIf="item?.id == 16">
+                                <button aria-label="Drawer Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal0116">Details</button>
+                                <button aria-label="Drawer Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal016">Create</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -598,6 +604,32 @@
             </div>
         </div>
 
+        <div class="modal fade details" id="exampleModal0116" tabindex="-1" aria-labelledby="Drawer Details Modal" aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Drawer</h4>
+                        <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-container ">
+                            <h3> Details for the drawer section are below.</h3>
+                            <p class="pref">Please do follow the below given instructions while creating your drawer component.</p>
+                            <div class="detail-content">
+                                <ul>
+                                    <li>User can enter text for the drawer with 25-250 characters.</li>
+                                    <li>User can select the direction from where drawer would appear i.e top,bottom,left or right.</li>
+                                    <li>User can select the theme of the drawer from the dropdown.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
         <div class="modal fade details" id="exampleModal0114" tabindex="-1" aria-labelledby="exampleModalLabel1"
@@ -893,6 +925,21 @@
                     <!-- <app-form (onclose)="close()"></app-form> -->
                     <!-- <h1>Vishnu Kumar </h1> -->
                     <app-breakpointlayoutform (onclose)="close()"></app-breakpointlayoutform>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal016" tabindex="-1" aria-labelledby="Drawer Create Modal" aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content header-modal">
+                    <div class="modal-header">
+                        <h4>Drawer</h4>
+                        <button class="clearbtn" #myModalClose16 data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <!-- <h1>Anand Udare </h1> -->
+                    <app-drawerform (onclose)="close()"></app-drawerform>
                 </div>
             </div>
         </div>
