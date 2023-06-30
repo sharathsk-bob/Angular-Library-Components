@@ -63,7 +63,8 @@ export class EditaccordianComponent {
       description3:[''],
       title4:[''],
       description4:[''],
-      color:['light',[Validators.required]]
+      color:['light',[Validators.required]],
+      symbol:['Plus',[Validators.required]]
     });
 
     this.registerForm.get("nolayout")?.valueChanges.subscribe((result)=>{
@@ -381,7 +382,8 @@ export class EditaccordianComponent {
         "description54":this.registerForm.value.description54,
         "title55":this.registerForm.value.title55,
         "description55":this.registerForm.value.description55,
-        "color":this.registerForm.value.color
+        "color":this.registerForm.value.color,
+        "symbol":this.registerForm.value.symbol
       };
 
       
