@@ -74,6 +74,9 @@ import { BreakpointComponent } from './Components/breakpoint/breakpoint.componen
 import { EditbreakpointComponent } from './FormComponents/editbreakpoint/editbreakpoint.component';
 import { EditloginComponent } from './FormComponents/editlogin/editlogin.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { DrawerComponent } from './Components/drawer/drawer.component';
+import { DrawerformComponent } from './FormComponents/drawerform/drawerform.component';
+import { EditdrawerComponent } from './FormComponents/editdrawer/editdrawer.component';
 import { AccordianComponent } from './Components/accordian/accordian.component';
 import { AccordianformComponent } from './FormComponents/accordianform/accordianform.component';
 import { EditaccordianComponent } from './FormComponents/editaccordian/editaccordian.component';
@@ -142,6 +145,9 @@ import { EditaccordianComponent } from './FormComponents/editaccordian/editaccor
     BreakpointComponent,
     EditbreakpointComponent,
     EditloginComponent,
+    DrawerComponent,
+    DrawerformComponent,
+    EditdrawerComponent,
     AccordianComponent,
     AccordianformComponent,
     EditaccordianComponent
