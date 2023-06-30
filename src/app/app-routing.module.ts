@@ -25,6 +25,7 @@ import { ImagesliderComponent } from './Components/imageslider/imageslider.compo
 import { LoginComponent } from './Components/login/login.component';
 import { BreakpointComponent } from './Components/breakpoint/breakpoint.component';
 import { DrawerComponent } from './Components/drawer/drawer.component';
+import { AccordianComponent } from './Components/accordian/accordian.component';
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
   {path : "component/imageslider", component:ImagesliderComponent},
   {path : "component/login&signup", component:LoginComponent},
   {path : "component/breakpoint", component:BreakpointComponent},
-  {path : "component/drawer", component:DrawerComponent}
+  {path : "component/drawer", component:DrawerComponent},
+  {path : "component/accordian", component: AccordianComponent}
 
 ];
 

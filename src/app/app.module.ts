@@ -77,6 +77,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { DrawerComponent } from './Components/drawer/drawer.component';
 import { DrawerformComponent } from './FormComponents/drawerform/drawerform.component';
 import { EditdrawerComponent } from './FormComponents/editdrawer/editdrawer.component';
+import { AccordianComponent } from './Components/accordian/accordian.component';
+import { AccordianformComponent } from './FormComponents/accordianform/accordianform.component';
+import { EditaccordianComponent } from './FormComponents/editaccordian/editaccordian.component';
 
 
 @NgModule({
@@ -144,7 +147,10 @@ import { EditdrawerComponent } from './FormComponents/editdrawer/editdrawer.comp
     EditloginComponent,
     DrawerComponent,
     DrawerformComponent,
-    EditdrawerComponent
+    EditdrawerComponent,
+    AccordianComponent,
+    AccordianformComponent,
+    EditaccordianComponent
    
   ],
   imports: [
