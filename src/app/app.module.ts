@@ -74,7 +74,8 @@ import { BreakpointComponent } from './Components/breakpoint/breakpoint.componen
 import { EditbreakpointComponent } from './FormComponents/editbreakpoint/editbreakpoint.component';
 import { EditloginComponent } from './FormComponents/editlogin/editlogin.component';
 import { NgSelectModule } from '@ng-select/ng-select';
-
+import { ErrorformcomponentComponent } from './FormComponents/errorpage/errorpage.component';
+import { ErroroutputComponent } from './Components/erroroutput/erroroutput.component';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     LoginComponent,
     BreakpointComponent,
     EditbreakpointComponent,
-    EditloginComponent
+    EditloginComponent,
+    ErrorformcomponentComponent,
+    ErroroutputComponent
    
   ],
   imports: [

@@ -1,0 +1,82 @@
+<div class="main">
+    <div class="top-header">
+      <div>
+        <h4 class="subheader">{{maintenancedata?.selectedType}}<span class="sideheader"></span></h4>
+      </div>
+      <div class="button-sec">
+        <button class="backbutton" (click)="backwindow()">Back</button>
+        <button class="backbutton" data-bs-toggle="modal" data-bs-target="#exampleModall16">Edit</button>
+      </div>
+    </div>
+    
+    <div class="main-error">
+      <div class="container mt-4 error-page " [ngClass]="maintenancedata?.theme" [ngStyle]="{'width':maintenancedata?.cardwidth}">
+        
+        <div class="error-container" *ngIf ="maintenancedata.selectedType =='Error Page'">
+          <div class="w-50">
+            <h2 class="header" data-text="404">
+              404
+           </h2>
+           <h4 class ="error-header"data-text="Opps! Page not found">
+              Opps! Page not found
+           </h4>
+            <p class="error-txt">
+             {{maintenancedata?.title}}
+            </p>
+            <h4>For immediate assistance:</h4>
+            <div class="btns">
+              <a href="#" class="link-primary">Return home page</a>
+            </div>
+           
+          </div>
+         
+        </div>
+
+
+
+
+
+
+        <div class="error-container" *ngIf ="maintenancedata.selectedType =='Maintenance Page'">
+
+          <div class="w-50">
+            <h2 class="header" data-text="503">
+              503
+           </h2>
+           <h4 class ="error-header"data-text="This page is under maintenance!">
+            This page is under maintenance!
+           </h4>
+            <p class="error-txt">
+             {{maintenancedata?.title}}
+            </p>
+            <h4>For immediate assistance:</h4>
+            <div class="btns">
+              <a href="#" class="link-primary">Return home page</a>
+            </div>
+           
+          </div>
+         
+        </div>
+   
+    </div>
+    </div>
+      
+   
+  
+    </div>
+
+
+    <div class="modal fade" id="exampleModal016" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+      <div class="modal-dialog modaldialog-width">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4>{{maintenancedata?.selectedType}}</h4>
+                  <button class="clearbtn" aria-label="close modal" #myModalClose16 data-bs-dismiss="modal">
+                      <img [src]="closeicon">
+                  </button>
+              </div>
+              <!-- <app-form (onclose)="close()"></app-form> -->
+              <app-errorpage (onclose)="close()"></app-errorpage>
+          </div>
+      </div>
+  </div>

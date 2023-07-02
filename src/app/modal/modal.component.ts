@@ -42,7 +42,9 @@ constructor(private router: Router){}
     {id:12,name:"Tabs"},
     {id:13,name:"LogIn/SignUp"},
     {id:14,name:"Image Slider"},
-    {id:15,name:"BreakPoint"}
+    {id:15,name:"BreakPoint"},
+    {id:18,name:"Maintenance"},
+
 ];
 
 subheading = "This components help to create and customize the";

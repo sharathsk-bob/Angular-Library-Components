@@ -46,6 +46,11 @@ export class CommonService {
     imagesliderstatusdata = this.imagesliderstatus.asObservable();
 
 
+           
+    private maintenancestatus = new BehaviorSubject<any>([]);
+    maintenancestatusdata = this.maintenancestatus.asObservable();
+
+
     
 
 
@@ -85,6 +90,10 @@ export class CommonService {
 
       imageslidercompletedata(data:any) {
         this.imagesliderstatus.next(data);
+      }
+
+      maintenancecompletedata(data:any) {
+        this.maintenancestatus.next(data);
       }
 
 
