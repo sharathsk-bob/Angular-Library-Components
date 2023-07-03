@@ -1,0 +1,103 @@
+<div class="modal-body">
+    <p><b>Please fill the mandatory fields according your preference to design drawer</b> </p>
+
+    <form  [formGroup]="drawerForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group pt-3">
+            <label>Text for drawer:</label><span class="star">*</span>
+            <input type="text" maxlength="250" class="form-control inputbox" aria-describedby="title-err-text" aria-required="true" placeholder="Please enter title" name="title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autofocus/>
+            <div class="invalid-feedback">
+                <div class="error" role="alert" aria-atomic="true">Text is required</div>
+                <div class="error" role="alert" aria-atomic="true">Minimum length of 25 required for text</div>
+                <div class="error" role="alert" aria-atomic="true">Maximum length 250 of allowed for  text</div>
+            </div>
+        </div>
+
+        <!-- <div *ngIf="(f.title.touched || submitted) && f.title.errors" class="invalid-feedback"></div> -->
+        <!-- *ngIf="f.title.errors.required" -->
+        <!-- *ngIf="f.title.errors.minlength" -->
+        <!-- *ngIf="f.title.errors.maxlength" -->
+
+
+        <!-- <div class="form-group">
+            <label>Profile Name:</label><span class="star">*</span>
+            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="profile-err-text" placeholder="Profile name" name="welcome" formControlName="welcome" [ngClass]="{ 'is-invalid': submitted && f.welcome.errors }" autofocus/>
+            <div *ngIf="(f.welcome.touched || submitted) && f.welcome.errors" class="invalid-feedback">
+                <div class="error" role="alert" id="profile-err-text" *ngIf="f.welcome.errors.required">Profile name is required</div>
+                <div class="error" role="alert" id="profile-err-text" *ngIf="f.welcome.errors.maxlength">maxlength 20</div>
+            </div>  
+        </div> -->
+
+        <!-- <div class="pt-3">
+            <label class="accessbility">Would you like to have Capgemini logo in the header section</label><span class="star">*</span>
+            <div class="form-group">
+                
+                <label class="image1"> <input type="radio"  name="image3" value="Yes" aria-describedby="capglogo-err-text" aria-label="Yes" aria-checked="Yes" formControlName="image3"> <span>Yes</span></label>
+                
+                <label class="image1"> <input type="radio" name="image3" value="No" aria-describedby="capglogo-err-text" aria-label="No" aria-checked="No" formControlName="image3"> <span>No</span></label>
+            
+                <div *ngIf="submitted && f.image3.errors" class="invalid-feedback">
+                    <div class="error" role="alert" id="capglogo-err-text" *ngIf="f.image3.errors.required">Capgemini logo is required</div>
+                </div>    
+                </div>        
+        </div> -->
+
+        <!-- <div class="pt-3">
+            <label class="accessbility">Would you like to have App Logo in the header section</label><span class="star">*</span>
+            <div class="form-group">
+                
+                <label class="image1" ><input type="radio" name="image1" value="Yes" aria-describedby="applogo-err-text" aria-label="Yes" formControlName="image1"> <span>Yes</span></label>
+                
+                <label class="image1" ><input type="radio"  name="image1" value="No" aria-describedby="applogo-err-text" aria-label="No" formControlName="image1"> <span>No</span></label>
+            </div>
+            <div *ngIf="submitted && f.image1.errors" class="invalid-feedback">
+                <div class="error" role="alert" id="applogo-err-text" *ngIf="f.image1.errors.required">App logo is required</div>
+            </div>    
+        </div> -->
+
+        <!-- <div class="pt-3">
+            <label class="accessbility">Would you like to have profile Image</label><span class="star">*</span>
+            <div class="form-group">
+                
+                <label class="image1" for="image3"><input type="radio" id="image3" name="image2" value="Yes" aria-describedby="image-err-text" aria-label="Yes" formControlName="image2"> <span>Yes</span></label>
+                
+                <label class="image1" for="image4"><input type="radio" id="image4" name="image2" value="No" aria-describedby="image-err-text" aria-label="No" formControlName="image2"> <span>No</span></label>
+            </div>
+            <div *ngIf="submitted && f.image2.errors" class="invalid-feedback">
+                <div class="error" role="alert" id="image-err-text" *ngIf="f.image2.errors.required">Profile image is required</div>
+            </div>    
+        </div> -->
+
+        <div class="pt-3">
+            <label class="accessbility">Please select direction for drawer </label><span class="star">*</span>
+            <div class="form-group d-flex align-items-center shadow-sec background">
+                <select class="bgcolor" name="color" aria-label="select  direction for drawer" formControlName="direction">
+                    <option>--Select--</option>
+                    <option>Top</option>
+                    <option>Bottom</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pt-3">
+            <label class="accessbility">Please select Theme color </label><span class="star">*</span>
+            <div class="form-group d-flex align-items-center shadow-sec background">
+                <select class="bgcolor" name="color" aria-label="select theme color" formControlName="color">
+                    <option>Light</option>
+                    <option>Dark</option>
+                    <option>Blue</option>
+                    <option>Purple</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="footerbutton">
+            <button class="submitbutton">
+                Create
+            </button>
+        </div>
+    </form>
+
+</div>

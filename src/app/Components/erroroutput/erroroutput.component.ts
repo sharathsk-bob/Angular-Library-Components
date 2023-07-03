@@ -19,70 +19,117 @@ export class ErroroutputComponent implements OnInit  {
   htmlcontent="active";
   csscontent:any;
   Copy="Copy";
-  CSS=`.nav.nav-tabs li {
-    padding: 10px 5px;
-    cursor: pointer;
-    width: 12%;
-    text-align: center;
-}
-
-.tab-content {
-    padding: 20px 0px;
-}
-
-.dynamics_tab{
-    padding: 20px 20px;
-    background-color: #fff;
-    margin: 30px 0px;
-}
-.dynamics_tab h3 {
-    text-decoration: underline;
-    padding: 20px 0px;
-}
-
-
-.Active.dark {
-    background-color: #000;
-    color: #fff;
-}
-.Active.blue {
-    background-color: #0070ad;
-    color: #fff;
-}
-.Active.purple {
-    background-color: #2b0a3d;
-    color: #fff;
-}
-.Active.light {
-    background-color: #ebebeb;
-    color: #000;
-}
-
-.nav-tabs li.Inactive:hover{
-    background-color: #737272;
-
-}
-
-
-.nav-tabs li.Active{
-    border-bottom: 2px solid #d6aaaa;
-}
-
-.nav-tabs li.Inactive{
-    background-color: #ccc;
-
-}
-
-
-@media only screen and (max-width: 767px) {
-    .nav.nav-tabs li {
-        width: 100%;
+  CSS=`.main-error{
+    height: 100vh;
+    .Blue{
+      background-color: #0070ad;;
     }
-}
+    .Dark{
+      background-color: black;
+      .error-container{
+        color: white;
+      }
+  
+    }
+    .Purple{
+      background-color: #2b0a3d;
+      .error-container{
+        color: white;
+      }
+    }
+    .Light{
+      background-color: white;
+      .error-container{
+        color: black;
+      }
+    }
+  }
+  .error-container{
+    height: 90vh;
+    // .w-50{
+    //   background-color: red;
+    // }
+    
+  }
+  .error-page{
+      // border: 1px solid black;
+      border-radius: 4px;
+      // height: 90vh;
+      margin-bottom: 1.5rem!important;
+      background-color: white;
+      box-shadow: 0px 5px 10px rgba(0,0,0,0.1);
+    
+        .error-container{
+          margin: 20px;
+    //       position: absolute;
+    // top: 20%;
+    // left: 15%;
+    // right: 15%;
+    // bottom: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .header{
+      font-size: 16vw;
+    line-height: 1em;
+    // text-align: center;
+    // position: relative;
+    
+    content: attr(data-text);
+    top: 0;
+    left: 0;
+    right: 0;
+    background: -webkit-repeating-linear-gradient(-45deg, #71b7e6, #69a6ce, #b98acc, #ee8176, #b98acc, #69a6ce, #9b59b6);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.25);
+    animation: animate 10s ease-in-out infinite;
+    }
+    .error-header{
+      font-size: 1.5em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #000;
+  
+    max-width: 600px;
+    position: relative;
+    }
+    .error-header:after{
+      position: absolute;
+    content: attr(data-text);
+    top: 0;
+    left: 0;
+    right: 0;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    }
+    .btns{
+      display: inline-block;
+    // margin: 0 10px;
+    text-decoration: none;
+    border: 2px solid #69a6ce;
+  //   color: #69a6ce;
+    font-weight: 500;
+    padding: 10px 25px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    background: #69a6ce;
+    }
+    .btns a{
+     
+    color: #fff!important;
+    }
+         
+        }
+  }
 `;
 
   @ViewChild('myModalClose16') modalClose16:any;
-  @ViewChild("tabs") elRef: ElementRef;
+  @ViewChild("mainerror") elRef: ElementRef;
 
   constructor(private router : Router, private commonservice:CommonService, elRef: ElementRef) {
     this.elRef = elRef;

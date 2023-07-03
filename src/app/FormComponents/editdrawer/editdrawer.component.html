@@ -1,0 +1,53 @@
+<div class="modal-body">
+    <p><b>Please update the mandatory fields according your preference to design drawer</b> </p>
+
+    <form  [formGroup]="drawerForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group pt-3">
+            <label>Text for drawer:</label><span class="star">*</span>
+            <input type="text" maxlength="250" class="form-control inputbox" aria-describedby="title-err-text" aria-required="true" placeholder="Please enter title" name="title" formControlName="title" autofocus/>
+            <div class="invalid-feedback">
+                <div class="error" role="alert" aria-atomic="true">Text is required</div>
+                <div class="error" role="alert" aria-atomic="true">Minimum length of 25 required for text</div>
+                <div class="error" role="alert" aria-atomic="true">Maximum length 250 of allowed for  text</div>
+            </div>
+        </div>
+
+        <!-- [ngClass]="{ 'is-invalid': submitted && f.title.errors }"  -->
+        <!-- <div *ngIf="(f.title.touched || submitted) && f.title.errors" class="invalid-feedback"></div> -->
+        <!-- *ngIf="f.title.errors.required" -->
+        <!-- *ngIf="f.title.errors.minlength" -->
+        <!-- *ngIf="f.title.errors.maxlength" -->
+
+        <div class="pt-3">
+            <label class="accessbility">Please select direction for drawer </label><span class="star">*</span>
+            <div class="form-group d-flex align-items-center shadow-sec background">
+                <select class="bgcolor" name="color" aria-label="select  direction for drawer" formControlName="direction">
+                    <option>--Select--</option>
+                    <option>Top</option>
+                    <option>Bottom</option>
+                    <option>Left</option>
+                    <option>Right</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pt-3">
+            <label class="accessbility">Please select Theme color </label><span class="star">*</span>
+            <div class="form-group d-flex align-items-center shadow-sec background">
+                <select class="bgcolor" name="color" aria-label="select theme color" formControlName="color">
+                    <option>Dark</option>
+                    <option>Blue</option>
+                    <option>Purple</option>
+                    <option>Light</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="footerbutton">
+            <button class="submitbutton">
+                Update
+            </button>
+        </div>
+    </form>
+</div>

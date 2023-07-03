@@ -66,16 +66,16 @@
 
 
 
-        <div class="footerbutton"  >
+        <div class="footerbutton" *ngIf="!errordata" >
             <button class="submitbutton">
                 Create
             </button>
         </div>
-        <!-- <div class="footerbutton" *ngIf="errordata">
+        <div class="footerbutton" *ngIf="errordata">
             <button  class="submitbutton">
                 Update
             </button>
-        </div> -->
+        </div>
     </form>
     
     </div> 

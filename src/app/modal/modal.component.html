@@ -109,11 +109,23 @@
                                 <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal015">Create</button>
                             </div>
+                            <div class="button-sec" *ngIf="item?.id == 16">
+                                <button aria-label="Button Detail" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal0116">Details</button>
+                                <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal016">Create</button>
+                            </div>
+                            <div class="button-sec" *ngIf="item?.id == 17">
+                                <button aria-label="Drawer Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal0117">Details</button>
+                                <button aria-label="Drawer Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal017">Create</button>
+                            </div>
                             <div class="button-sec" *ngIf="item?.id == 18">
                                 <button aria-label="Button Detail" class="btn btn-primary me-2" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal0118">Details</button>
+                                    data-bs-target="#exampleModal018">Details</button>
                                 <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal018">Create</button>
+                                    data-bs-target="#exampleModal0118">Create</button>
                             </div>
                         </div>
                     </div>
@@ -604,7 +616,33 @@
             </div>
         </div>
 
-        <div class="modal fade details" id="exampleModal0118" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        <div class="modal fade details" id="exampleModal0117" tabindex="-1" aria-labelledby="Drawer Details Modal" aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Drawer</h4>
+                        <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-container ">
+                            <h3> Details for the drawer section are below.</h3>
+                            <p class="pref">Please do follow the below given instructions while creating your drawer component.</p>
+                            <div class="detail-content">
+                                <ul>
+                                    <li>User can enter text for the drawer with 25-250 characters.</li>
+                                    <li>User can select the direction from where drawer would appear i.e top,bottom,left or right.</li>
+                                    <li>User can select the theme of the drawer from the dropdown.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade details" id="exampleModal018" tabindex="-1" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
         <div class="modal-dialog modaldialog-width">
             <div class="modal-content">
@@ -933,7 +971,69 @@
             </div>
         </div>
 
+        <div class="modal fade details" id="exampleModal0116" tabindex="-1" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Accordian</h4>
+                        <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-container ">
+                            <h3> Details for the Accordian section are below.</h3>
+                            <p class="pref">Please do follow the below given instructions while creating your accordian
+                                component.</p>
+                            <div class="detail-content">
+                                <ul>
+                                    <li class="points">User can select the number of options (maximum upto 5)</li>
+                                    <li class="points">User can add the title and description for each accordian(title:minimum 3 maximum 15 characters , description:maximum 100 characters)</li>
+                                    <li class="points">User can select the Symbol for the accordian</li>
+                                    <li class="points">User can select the theme for the accordian</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="modal fade" id="exampleModal016" tabindex="-1" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Accordian</h4>
+                        <button class="clearbtn" aria-label="close modal" #myModalClose14 data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <!-- <app-form (onclose)="close()"></app-form> -->
+                    <!-- <h1>Vishnu Kumar </h1> -->
+                    <app-accordianform (onclose)="close()"></app-accordianform>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal017" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Drawer</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose13 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <app-drawerform (onclose)="close()"></app-drawerform>
+            </div>
+        </div>
+    </div>
+
+        <div class="modal fade" id="exampleModal0118" tabindex="-1" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
         <div class="modal-dialog modaldialog-width">
             <div class="modal-content">
