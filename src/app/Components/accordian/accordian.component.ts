@@ -14,7 +14,8 @@ export class AccordianComponent {
   Copy="Copy";
   bgcolor:any;
   color:any;
-  CSS=`.accordion {
+  CSS=`@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
+  .accordion {
     margin: 20px 20px 20px 20px;
   }
   .accordion-item {
@@ -27,21 +28,97 @@ export class AccordianComponent {
   }
   .accordianmodal {
     max-width: 50% !important;
-}
-.modal-dialog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  height: 100%;
-}
-.accordion-button:focus {
-  //z-index: 3;
-  border: 3px solid black !important;
-  box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%) !important;
-  //outline: 0;
-  //box-shadow: var(--bs-accordion-btn-focus-box-shadow);
-}`
+  }
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+  }
+  .accordion-button:focus {
+    border: 3px solid grey !important;
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%) !important;
+  }
+  
+  .htmlelement {
+    background-color: var(--color-white);
+    overflow-y: scroll;
+    width: 100%;
+    height: 350px;
+    margin: auto;
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+  .active-accordian {
+    border-bottom: 1px solid black !important;
+    padding-bottom: 5px !important;
+  }
+  .copybutton {
+    text-align: end;
+    margin-right: 40px;
+    margin-top: 30px;
+    button {
+      border: 1.5px solid black;
+      background: transparent;
+      border-radius: 10px;
+      padding: 5px 10px;
+    }
+    .copyicon {
+      margin-right: 5px;
+    }
+  }
+  .list-inline {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    li:first-child {
+      margin-right: 10px;
+    }
+    li {
+      cursor: pointer;
+      button {
+        border: none;
+        background: transparent;
+        padding: 0px;
+      }
+    }
+  }
+  
+  .Arrow::after {
+    background-image:url("../../../assets/images/arrow-white.png")!important;
+    background-size: contain;
+    width: 15px !important;
+    background-position: center;
+    height: 15px !important;
+    transform: rotate(270deg);
+  }
+  
+  .Arrow:not(.collapsed)::after {
+    background-image: url("../../../assets/images/arrow-white.png") !important;
+    background-size: contain;
+    width: 15px !important;
+    background-position: center;
+    height: 15px !important;
+    transform: rotate(90deg);
+  }
+  
+  .Plus::after {
+    background-image: none !important;
+    content:"\f067";
+    font-family: FontAwesome;
+  }
+  
+  .Plus:not(.collapsed)::after {
+    background-image: none !important;
+    content:"\f068";
+    padding-right: 5px;
+    transform: rotate(0deg);
+  }
+  
+  `
   @ViewChild('myModalClose14') modalClose1:any;
   
   @ViewChild("accordian") elRef: ElementRef;

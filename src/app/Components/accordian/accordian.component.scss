@@ -1,3 +1,4 @@
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 .accordion {
   margin: 20px 20px 20px 20px;
 }
@@ -89,17 +90,15 @@
 }
 
 .Plus::after {
-  background-image: url("../../../assets/images/plus.svg");
-  background-size: contain;
-  width: 15px !important;
-  background-position: center;
-  height: 15px !important;
+  background-image: none !important;
+  content:"\f067";
+  font-family: FontAwesome;
 }
 
 .Plus:not(.collapsed)::after {
-  background-image: url("../../../assets/images/minus.svg");
-  background-size: contain;
-  width: 15px !important;
-  background-position: center;
-  height: 15px !important;
+  background-image: none !important;
+  content:"\f068";
+  padding-right: 5px;
+  transform: rotate(0deg);
 }
+
