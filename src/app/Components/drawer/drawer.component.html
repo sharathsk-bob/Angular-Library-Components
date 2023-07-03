@@ -34,24 +34,29 @@
             </div>
         </header> -->
 
-          <!-- <p>drawer works!</p> -->
+        <!-- <p>drawer works!</p> -->
+        <div #drawer class="drawer-content">
 
-          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+            <button class="btn btn-custom" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvas">Toggle drawer/offcanvas</button>
 
-            <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
-            <div class="offcanvas-header">
-                <h5 id="offcanvasTopLabel">Offcanvas top</h5>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                ...idhar aayega content
-            </div>
+            <div class="offcanvas"  [ngClass]="[drawerdata.direction=='Left'?'offcanvas-start': drawerdata.direction=='Right'?'offcanvas-end':drawerdata.direction=='Top'?'offcanvas-top':drawerdata.direction=='Bottom'?'offcanvas-bottom':'', drawerdata.timeout=='1000ms'?'drawer-slide-low': drawerdata.timeout=='2000ms'?'drawer-slide-medium': drawerdata.timeout=='5000ms'?'drawer-slide-high':'']" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvas-Label">
+            <!-- <div [ngClass]="drawerdata.timeout=='1000ms'?'drawer-slide-low': drawerdata.timeout=='2000ms'?'drawer-slide-medium': drawerdata.timeout=='5000ms'?'drawer-slide-high':''"> -->
+                <div class="offcanvas-header">
+                    <h5 id="offcanvasTopLabel">Show Drawer/Offcanvas</h5>
+                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div [ngStyle]="{'backgroundColor':bgcolor,'color':color}" class="offcanvas-body">
+                    {{drawerdata.drawertext}}
+                </div>
+            <!-- </div> -->
             </div>
 
-          <ul class="list-inline">
+        </div>
+
+        <ul class="list-inline">
             <li (click)="openhtml()"><button [class]="htmlcontent">HTML</button></li>
             <li (click)="opencss()"><button [class]="csscontent">CSS</button></li>
-          </ul>
+        </ul>
         
         <div class="htmlelement" *ngIf="htmlcontent == 'active'">
             <div class="copybutton">

@@ -5,19 +5,13 @@
 
         <div class="form-group pt-3">
             <label>Text for drawer:</label><span class="star">*</span>
-            <input type="text" maxlength="250" class="form-control inputbox" aria-describedby="title-err-text" aria-required="true" placeholder="Please enter title" name="title" formControlName="title" [ngClass]="{ 'is-invalid': submitted && f.title.errors }" autofocus/>
-            <div class="invalid-feedback">
-                <div class="error" role="alert" aria-atomic="true">Text is required</div>
-                <div class="error" role="alert" aria-atomic="true">Minimum length of 25 required for text</div>
-                <div class="error" role="alert" aria-atomic="true">Maximum length 250 of allowed for  text</div>
+            <input type="text" maxlength="250" class="form-control inputbox" aria-describedby="text for drawer" aria-required="true" placeholder="Please enter text for drawer" name="drawertext" formControlName="drawertext" [ngClass]="{ 'is-invalid': submitted && f.drawertext.errors }" autofocus/>
+            <div class="invalid-feedback" *ngIf="(f.drawertext.touched || submitted) && f.drawertext.errors" >
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.drawertext.errors.required">Text is required</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.drawertext.errors.minlength">Minimum length of 25 required for drawer text</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.drawertext.errors.maxlength">Maximum length 250 of allowed for drawer text</div>
             </div>
         </div>
-
-        <!-- <div *ngIf="(f.title.touched || submitted) && f.title.errors" class="invalid-feedback"></div> -->
-        <!-- *ngIf="f.title.errors.required" -->
-        <!-- *ngIf="f.title.errors.minlength" -->
-        <!-- *ngIf="f.title.errors.maxlength" -->
-
 
         <!-- <div class="form-group">
             <label>Profile Name:</label><span class="star">*</span>
@@ -42,41 +36,26 @@
                 </div>        
         </div> -->
 
-        <!-- <div class="pt-3">
-            <label class="accessbility">Would you like to have App Logo in the header section</label><span class="star">*</span>
-            <div class="form-group">
-                
-                <label class="image1" ><input type="radio" name="image1" value="Yes" aria-describedby="applogo-err-text" aria-label="Yes" formControlName="image1"> <span>Yes</span></label>
-                
-                <label class="image1" ><input type="radio"  name="image1" value="No" aria-describedby="applogo-err-text" aria-label="No" formControlName="image1"> <span>No</span></label>
+        <div class="pt-3">
+            <label class="accessbility">Please select timeout value for drawer </label><span class="star">*</span>
+            <div class="form-group d-flex align-items-center shadow-sec background">
+                <select class="bgcolor" name="timeout" aria-label="select timeout for drawer" formControlName="timeout">
+                    <option>1000ms</option>
+                    <option>2000ms</option>
+                    <option>5000ms</option>
+                </select>
             </div>
-            <div *ngIf="submitted && f.image1.errors" class="invalid-feedback">
-                <div class="error" role="alert" id="applogo-err-text" *ngIf="f.image1.errors.required">App logo is required</div>
-            </div>    
-        </div> -->
-
-        <!-- <div class="pt-3">
-            <label class="accessbility">Would you like to have profile Image</label><span class="star">*</span>
-            <div class="form-group">
-                
-                <label class="image1" for="image3"><input type="radio" id="image3" name="image2" value="Yes" aria-describedby="image-err-text" aria-label="Yes" formControlName="image2"> <span>Yes</span></label>
-                
-                <label class="image1" for="image4"><input type="radio" id="image4" name="image2" value="No" aria-describedby="image-err-text" aria-label="No" formControlName="image2"> <span>No</span></label>
-            </div>
-            <div *ngIf="submitted && f.image2.errors" class="invalid-feedback">
-                <div class="error" role="alert" id="image-err-text" *ngIf="f.image2.errors.required">Profile image is required</div>
-            </div>    
-        </div> -->
+        </div>
 
         <div class="pt-3">
             <label class="accessbility">Please select direction for drawer </label><span class="star">*</span>
             <div class="form-group d-flex align-items-center shadow-sec background">
-                <select class="bgcolor" name="color" aria-label="select  direction for drawer" formControlName="direction">
-                    <option>--Select--</option>
-                    <option>Top</option>
-                    <option>Bottom</option>
+                <select class="bgcolor" name="direction" aria-label="select direction for drawer" formControlName="direction">
+                    <!-- <option>--Select--</option> -->
                     <option>Left</option>
                     <option>Right</option>
+                    <option>Top</option>
+                    <option>Bottom</option>
                 </select>
             </div>
         </div>

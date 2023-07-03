@@ -7,32 +7,71 @@ import { Router } from '@angular/router';
   styleUrls: ['./drawer.component.scss']
 })
 export class DrawerComponent {
+
   title = "";
-  img1="../assets/images/WellBeingHubLogo.png";
-  img2="../assets/images/notify.png";
-  img3="../assets/images/cg_logo.svg";
-  img4="../assets/images/Capgemini white logo.png";
-  whitewbh="../assets/images/WBH logo-on dark surface.png";
+  // img1="../assets/images/WellBeingHubLogo.png";
+  // img2="../assets/images/notify.png";
+  // img3="../assets/images/cg_logo.svg";
+  // img4="../assets/images/Capgemini white logo.png";
+  // whitewbh="../assets/images/WBH logo-on dark surface.png";
   closeicon="../assets/images/close.png";
 
-  headerdata:any;
+  drawerdata:any;
   htmlcontent="active";
   csscontent:any;
+  bgcolor:any;
+  color:any;
   Copy="Copy";
-  CSS=`...paste CSS here`
+  CSS=`.drawer-content {
+    text-align: center;
+    margin: 80px 0px;
+}
 
-  @ViewChild('myModalClose1') modalClose1:any;
-  @ViewChild("myheader") elRef: ElementRef;
+.btn-custom {
+    background-color: #0070AD;
+    color: white;
+}
+
+.btn-custom:focus {
+    border: 2px black solid;
+}
+
+.drawer-slide-low {
+    transition: 1000ms ease-in;
+}
+
+.drawer-slide-medium {
+    transition: 2000ms ease-in;
+}
+
+.drawer-slide-high {
+    transition: 5000ms ease-in;
+}`
+  
+  @ViewChild('myModalClose14') modalClose1:any;
+  @ViewChild("drawer") elRef: ElementRef;
 
   constructor(private router: Router, elRef: ElementRef) {
     this.elRef = elRef;
   }
   
   ngOnInit() {
-    if(localStorage.getItem("data")) {
-      var data1:any =  localStorage.getItem("data");
-      this.headerdata = JSON.parse(data1);
-    // console.log(">>>>>>>>>>>>>>>>>headerdata",this.headerdata);
+    if(localStorage.getItem("drawerdata")) {
+      var data1:any =  localStorage.getItem("drawerdata");
+      this.drawerdata = JSON.parse(data1);
+      if(this.drawerdata.color == "Dark"){
+        this.bgcolor="black";
+        this.color="white";
+      } else if(this.drawerdata.color == "Blue"){
+        this.bgcolor="#0070ad";
+        this.color="white";
+      } else if(this.drawerdata.color == "Purple"){
+        this.bgcolor="#2b0a3d";
+        this.color="white";
+      } else if(this.drawerdata.color == "Light"){
+        this.bgcolor="#B7C9E2";
+        this.color="black";
+      }
 
     }
   }
