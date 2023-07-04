@@ -25,10 +25,9 @@ constructor(private router: Router){}
   @ViewChild('myModalClose12') modalClose12:any;
   @ViewChild('myModalClose13') modalClose13:any;
   @ViewChild('myModalClose14') modalClose14:any;
-
+  @ViewChild('myModalClose15') modalClose15:any;
   @ViewChild('myModalClose16') modalClose16:any;
   @ViewChild('myModalClose17') modalClose17:any;
-  @ViewChild('myModalClose18') modalClose18:any;
 
   array = [
     {id:1,name:"Header"},
@@ -74,10 +73,9 @@ close(){
   this.modalClose12.nativeElement.click();
   this.modalClose13.nativeElement.click();
   this.modalClose14.nativeElement.click();
-
+  this.modalClose15.nativeElement.click();
   this.modalClose16.nativeElement.click();
   this.modalClose17.nativeElement.click();
-  this.modalClose18.nativeElement.click();
   console.log(">>>>>>>>>>>>>>>>");
 }
 
