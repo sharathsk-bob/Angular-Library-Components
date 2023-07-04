@@ -23,7 +23,9 @@
 .drawer-slide-high {
     transition: 5000ms ease-in;
 }
-
+.offcanvas-body {
+    overflow-y: revert;
+}
 .htmlelement{
     background-color: var(--color-white);;
     overflow-y: scroll;

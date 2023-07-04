@@ -1,7 +1,12 @@
 .main-error{
   height: 100vh;
   .Blue{
-    background-color: #0070ad;;
+    background-color: #0070ad;
+    color: #fff;
+    .error-header{
+      color: #fff!important;
+    }
+
   }
   .Dark{
     background-color: black;
@@ -187,6 +192,9 @@
     width: 100%!important;
   }
  }
+  }
+  .top-header{
+    display: block;
   }
  }
 //  @media only screen and (max-width: 450px) {
