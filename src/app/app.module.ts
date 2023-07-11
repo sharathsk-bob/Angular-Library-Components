@@ -82,6 +82,7 @@ import { AccordianformComponent } from './FormComponents/accordianform/accordian
 import { EditaccordianComponent } from './FormComponents/editaccordian/editaccordian.component';
 import { ErrorformcomponentComponent } from './FormComponents/errorpage/errorpage.component';
 import { ErroroutputComponent } from './Components/erroroutput/erroroutput.component';
+import { ChartsComponent } from './Components/charts/charts.component';
 
 @NgModule({
   declarations: [
@@ -153,7 +154,8 @@ import { ErroroutputComponent } from './Components/erroroutput/erroroutput.compo
     AccordianformComponent,
     EditaccordianComponent,
     ErrorformcomponentComponent,
-    ErroroutputComponent
+    ErroroutputComponent,
+    ChartsComponent
    
   ],
   imports: [

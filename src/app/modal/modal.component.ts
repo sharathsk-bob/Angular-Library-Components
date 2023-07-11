@@ -29,7 +29,7 @@ constructor(private router: Router){}
   @ViewChild('myModalClose16') modalClose16:any;
   @ViewChild('myModalClose17') modalClose17:any;
   @ViewChild('myModalClose18') modalClose18:any;
-
+  @ViewChild('myModalClose19') modalClose19:any;
   array = [
     {id:1,name:"Header"},
     {id:2,name:"Card"},
@@ -49,6 +49,7 @@ constructor(private router: Router){}
     {id:16,name:"Accordian"},
     {id:17,name:"Drawer"},
     {id:18,name:"Maintenance/Error Page"},
+    {id:19,name:"Charts"},
 
 ];
 
@@ -78,11 +79,16 @@ close(){
   this.modalClose16.nativeElement.click();
   this.modalClose17.nativeElement.click();
   this.modalClose18.nativeElement.click();
+  this.modalClose19.nativeElement.click();
   console.log(">>>>>>>>>>>>>>>>");
 }
 
 routetocomp() {
   this.router.navigate(['/component/forms']);
+
+}
+routetochartcomp(){
+  this.router.navigate(['/component/charts']);
 
 }
 

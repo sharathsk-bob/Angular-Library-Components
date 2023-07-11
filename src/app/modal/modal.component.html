@@ -127,6 +127,12 @@
                                 <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal0118">Create</button>
                             </div>
+                            <div class="button-sec" *ngIf="item?.id == 19">
+                                <button aria-label="Button Detail" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal019">Details</button>
+                                <button aria-label="Button Create" class="btn btn-primary"
+                                    (click)="routetochartcomp()">Components</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -672,6 +678,35 @@
             </div>
         </div>
     </div>
+    <div class="modal fade details" id="exampleModal019" tabindex="-1" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog modaldialog-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Charts</h4>
+                <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                    <img [src]="closeicon">
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="details-container ">
+                    <h3> Details for the Charts section are below.</h3>
+                    <p class="pref">Please do follow the below given instructions while creating your Chart
+                        component.</p>
+                    <div class="detail-content">
+                        <ul>
+                            <li> User can create various chart components</li>
+                            <li>Charts options available are :  Piechart, Donut Chart, Bar chart</li>
+                            <li>Instructions to create particular charts are given in the respective details.</li>
+                           
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -1040,6 +1075,22 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Maintenance Page</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose13 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <!-- <app-form (onclose)="close()"></app-form> -->
+                <!-- <h1>Vishnu Kumar </h1> -->
+                <app-errorpage (onclose)="close()"></app-errorpage>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal0119" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Charts</h4>
                     <button class="clearbtn" aria-label="close modal" #myModalClose13 data-bs-dismiss="modal">
                         <img [src]="closeicon">
                     </button>
