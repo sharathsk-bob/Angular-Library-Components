@@ -48,7 +48,7 @@ export class DrawerComponent {
     transition: 5000ms ease-in;
 }`
   
-  @ViewChild('myModalClose14') modalClose1:any;
+  @ViewChild('myModalClose15') modalClose1:any;
   @ViewChild("drawer") elRef: ElementRef;
 
   constructor(private router: Router, elRef: ElementRef) {
