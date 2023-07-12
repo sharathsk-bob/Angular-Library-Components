@@ -83,6 +83,9 @@ import { EditaccordianComponent } from './FormComponents/editaccordian/editaccor
 import { ErrorformcomponentComponent } from './FormComponents/errorpage/errorpage.component';
 import { ErroroutputComponent } from './Components/erroroutput/erroroutput.component';
 import { ChartsComponent } from './Components/charts/charts.component';
+import { BarchartComponent } from './Components/barchart/barchart.component';
+import { BarchartformComponent } from './FormComponents/barchartform/barchartform.component';
+import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchart.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +158,10 @@ import { ChartsComponent } from './Components/charts/charts.component';
     EditaccordianComponent,
     ErrorformcomponentComponent,
     ErroroutputComponent,
-    ChartsComponent
+    ChartsComponent,
+    BarchartComponent,
+    BarchartformComponent,
+    EditbarchartComponent
    
   ],
   imports: [

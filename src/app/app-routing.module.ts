@@ -28,6 +28,7 @@ import { DrawerComponent } from './Components/drawer/drawer.component';
 import { AccordianComponent } from './Components/accordian/accordian.component';
 import { ErroroutputComponent } from './Components/erroroutput/erroroutput.component';
 import { ChartsComponent } from './Components/charts/charts.component';
+import { BarchartComponent } from './Components/barchart/barchart.component';
 
 const routes: Routes = [
  
@@ -59,7 +60,8 @@ const routes: Routes = [
   {path : "component/drawer", component:DrawerComponent},
   {path : "component/accordian", component: AccordianComponent},
   {path : "component/errorpage", component:ErroroutputComponent},
-  {path : "component/charts", component:ChartsComponent}
+  {path : "component/charts", component:ChartsComponent},
+  {path : "component/barchart", component:BarchartComponent},
 ];
 
 @NgModule({

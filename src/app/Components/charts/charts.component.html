@@ -36,10 +36,10 @@
                                 data-bs-target="#exampleModal1">Create </button>
                         </div>
                         <div class="button-sec" *ngIf="item?.id == 3">
-                            <button aria-label="Checkbox/Radio Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal11">Details</button>
-                            <button aria-label="Checkbox/Radio Create Button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal1">Create </button>
+                            <button aria-label="Bar Chart Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal12">Details</button>
+                            <button aria-label="Bar Chart Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">Create </button>
                         </div>
                        
                            
@@ -97,6 +97,49 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade details" id="exampleModal12" tabindex="-1" aria-labelledby="Bar chart Details Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Bar Chart</h4>
+                    <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="details-container ">
+                        <h3> Details for the bar chart section are below.</h3>
+                        <p class="pref">Please do follow the below given instructions while creating your bar chart component.</p>
+                        <div class="detail-content">
+                            <ul>
+                                <li>User can enter text for the drawer with 25-250 characters.</li>
+                                <li>User can select the timeframe for which the drawer would appear i.e 1000ms,2000ms or 5000ms.</li>
+                                <li>User can select the direction from where drawer would appear i.e top,bottom,left or right.</li>
+                                <li>User can select the theme of the drawer from the dropdown.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="Bar chart Create Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Bar Chart</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose15 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <app-barchartform (onclose)="close()"></app-barchartform>
+            </div>
+        </div>
+    </div>
+
+
 
     
      

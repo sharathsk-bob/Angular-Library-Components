@@ -1055,18 +1055,18 @@
 
         <div class="modal fade" id="exampleModal017" tabindex="-1" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
-        <div class="modal-dialog modaldialog-width">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4>Drawer</h4>
-                    <button class="clearbtn" aria-label="close modal" #myModalClose15 data-bs-dismiss="modal">
-                        <img [src]="closeicon">
-                    </button>
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>Drawer</h4>
+                        <button class="clearbtn" aria-label="close modal" #myModalClose15 data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <app-drawerform (onclose)="close()"></app-drawerform>
                 </div>
-                <app-drawerform (onclose)="close()"></app-drawerform>
             </div>
         </div>
-    </div>
 
         <div class="modal fade" id="exampleModal0118" tabindex="-1" aria-labelledby="exampleModalLabel1"
         aria-hidden="true">
@@ -1078,7 +1078,6 @@
                         <img [src]="closeicon">
                     </button>
                 </div>
-                <!-- <app-form (onclose)="close()"></app-form> -->
                 <app-errorpage (onclose)="close()"></app-errorpage>
             </div>
         </div>
@@ -1093,8 +1092,6 @@
                         <img [src]="closeicon">
                     </button>
                 </div>
-                <!-- <app-form (onclose)="close()"></app-form> -->
-                <!-- <h1>Vishnu Kumar </h1> -->
                 <app-errorpage (onclose)="close()"></app-errorpage>
             </div>
         </div>
