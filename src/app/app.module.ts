@@ -82,6 +82,10 @@ import { AccordianformComponent } from './FormComponents/accordianform/accordian
 import { EditaccordianComponent } from './FormComponents/editaccordian/editaccordian.component';
 import { ErrorformcomponentComponent } from './FormComponents/errorpage/errorpage.component';
 import { ErroroutputComponent } from './Components/erroroutput/erroroutput.component';
+import { PiechartComponent } from './Components/piechart/piechart.component';
+import { PiechartformComponent } from './FormComponents/piechartform/piechartform.component';
+import { EditpiechartComponent } from './FormComponents/editpiechart/editpiechart.component';
+
 
 @NgModule({
   declarations: [
@@ -153,7 +157,10 @@ import { ErroroutputComponent } from './Components/erroroutput/erroroutput.compo
     AccordianformComponent,
     EditaccordianComponent,
     ErrorformcomponentComponent,
-    ErroroutputComponent
+    ErroroutputComponent,
+    PiechartComponent,
+    PiechartformComponent,
+    EditpiechartComponent
    
   ],
   imports: [

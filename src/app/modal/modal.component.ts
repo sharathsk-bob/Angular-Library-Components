@@ -28,6 +28,7 @@ constructor(private router: Router){}
   @ViewChild('myModalClose15') modalClose15:any;
   @ViewChild('myModalClose16') modalClose16:any;
   @ViewChild('myModalClose17') modalClose17:any;
+  @ViewChild('myModalClose18') modalClose18:any;
 
   array = [
     {id:1,name:"Header"},
@@ -48,6 +49,7 @@ constructor(private router: Router){}
     {id:16,name:"Accordian"},
     {id:17,name:"Drawer"},
     {id:18,name:"Maintenance/Error Page"},
+    {id:19,name:"PieChart"}
 
 ];
 
@@ -76,6 +78,7 @@ close(){
   this.modalClose15.nativeElement.click();
   this.modalClose16.nativeElement.click();
   this.modalClose17.nativeElement.click();
+  this.modalClose18.nativeElement.click();
   console.log(">>>>>>>>>>>>>>>>");
 }
 

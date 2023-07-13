@@ -127,6 +127,12 @@
                                 <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#exampleModal0118">Create</button>
                             </div>
+                            <div class="button-sec" *ngIf="item?.id == 19">
+                                <button aria-label="Button Detail" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal019">Details</button>
+                                <button aria-label="Button Create" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal0119">Create</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1050,6 +1056,54 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade details" id="exampleModal019" tabindex="-1" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>PieChart</h4>
+                        <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-container ">
+                            <h3> Details for the PieChart section are below.</h3>
+                            <p class="pref">Please do follow the below given instructions while creating your PieChart
+                                component.</p>
+                            <div class="detail-content">
+                                <ul>
+                                    <li class="points">User can select the number of options (maximum upto 5)</li>
+                                    <li class="points">User can add the name and value for each data(title:minimum 3 maximum 15 characters , value:maximum 100 and sum of all values is less than 100)</li>
+                                    <li class="points">User can select the size for the piechart</li>
+                                    <li class="points">User can select the theme for the piechart</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal0119" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Pie Chart</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose16 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <!-- <app-form (onclose)="close()"></app-form> -->
+                <!-- <h1>Vishnu Kumar </h1> -->
+                <app-piechartform (onclose)="close()"></app-piechartform>
+            </div>
+        </div>
+    </div>
+
 
 
     </div>
