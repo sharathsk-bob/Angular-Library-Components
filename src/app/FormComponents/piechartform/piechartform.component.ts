@@ -371,7 +371,7 @@ export class PiechartformComponent {
       
       this.onclose.emit();
       localStorage.setItem("accordiandata",JSON.stringify(data));
-      this.router.navigate(['component/accordian']);
+      this.router.navigate(['component/piechart']);
     }
   }
 }

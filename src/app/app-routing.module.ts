@@ -64,6 +64,7 @@ const routes: Routes = [
   {path : "component/piechart", component:PiechartComponent},
 
   {path : "component/charts", component:ChartsComponent},
+  {path : "component/piechart", component:PiechartComponent},
   {path : "component/barchart", component:BarchartComponent},
 ];
 

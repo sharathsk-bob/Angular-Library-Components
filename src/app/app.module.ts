@@ -85,7 +85,7 @@ import { ErroroutputComponent } from './Components/erroroutput/erroroutput.compo
 import { PiechartComponent } from './Components/piechart/piechart.component';
 import { PiechartformComponent } from './FormComponents/piechartform/piechartform.component';
 import { EditpiechartComponent } from './FormComponents/editpiechart/editpiechart.component';
-
+import { NgChartsModule, NgChartsConfiguration  } from 'ng2-charts';
 import { ChartsComponent } from './Components/charts/charts.component';
 import { BarchartComponent } from './Components/barchart/barchart.component';
 import { BarchartformComponent } from './FormComponents/barchartform/barchartform.component';
@@ -186,6 +186,7 @@ import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchar
     FilterPipeModule,
     Ng2SearchPipeModule,
     NgSelectModule,
+    NgChartsModule,
     // NgxSpinnerModule,
     NgMultiSelectDropDownModule.forRoot(),
     ToastrModule.forRoot({
@@ -195,6 +196,7 @@ import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchar
     // NgxSpinnerModule.forRoot({ type: 'ball-clip-rotate' })
   ],
   providers: [
+    { provide: NgChartsConfiguration, useValue: { generateColors: false }},
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
