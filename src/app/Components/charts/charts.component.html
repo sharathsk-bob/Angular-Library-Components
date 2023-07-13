@@ -1,0 +1,194 @@
+<section class="main">
+    <div class="top-header">
+        <div>
+            <h4 class="subheader">Chart <span class="sideheader">Component</span></h4>
+        </div>
+        <div class="button-sec">
+            <button class="backbutton" aria-label="back to modal" (click)="backwindow()">Back</button>
+            <!-- <button class="backbutton" data-bs-toggle="modal" data-bs-target="#exampleModal2">Edit</button> -->
+        </div>
+    </div>
+
+
+    <div class="main-page">
+
+        <div class="row  py-3 homecmp">
+            <div class="col-md-4 mb-3" *ngFor="let item of chartscomponentarray">
+                <div class="card feature">
+                    <div class="card-header">
+                        {{item?.name}}
+                    </div>
+
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">Special title treatment</h5> -->
+                        <p class="card-text">{{turncate(formsubheading)}} {{item?.name}}.</p>
+
+                        <div class="button-sec" *ngIf="item?.id == 1">
+                            <button aria-label="Input/Textarea Detail Button" class="btn btn-primary me-2"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal01">Details</button>
+                            <button aria-label="Input/Textarea Create Button" class="btn btn-primary me-2"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal011">Create</button>
+                        </div>
+                        <div class="button-sec" *ngIf="item?.id == 2">
+                            <button aria-label="Checkbox/Radio Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal11">Details</button>
+                            <button aria-label="Checkbox/Radio Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">Create </button>
+                        </div>
+                        <div class="button-sec" *ngIf="item?.id == 3">
+                            <button aria-label="Bar Chart Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal12">Details</button>
+                            <button aria-label="Bar Chart Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal2">Create </button>
+                        </div>
+                       
+                           
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade details" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modaldialog-width">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4>PieChart</h4>
+                        <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                            <img [src]="closeicon">
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="details-container ">
+                            <h3> Details for the PieChart section are below.</h3>
+                            <p class="pref">Please do follow the below given instructions while creating your PieChart
+                                component.</p>
+                            <div class="detail-content">
+                                <ul>
+                                    <li class="points">User can select the number of options (maximum upto 5)</li>
+                                    <li class="points">User can add the name and value for each data(title:minimum 3 maximum 15 characters , value:maximum 100 and sum of all values is less than 100)</li>
+                                    <li class="points">User can select the size for the piechart</li>
+                                    <li class="points">User can select the theme for the piechart</li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal011" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Pie Chart</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose16 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <!-- <app-form (onclose)="close()"></app-form> -->
+                <!-- <h1>Vishnu Kumar </h1> -->
+                <app-piechartform (onclose)="close()"></app-piechartform>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade details" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel1"
+        aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Donut Chart</h4>
+                    <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="details-container ">
+                        <h3> Details for the Donut section are below.</h3>
+                        <p class="pref">Please do follow the below given instructions while creating your Donut
+                            component.</p>
+                        <div class="detail-content">
+                            <ul>
+                                <li>Input/Textarea label should be less than 15 characters.</li>
+                                <li>Input text should be less than 50 characters.</li>
+                                <li>Textarea text should be less than 50 characters.</li>
+                                <li>You can select width of input/textarea from the given options.</li>
+                                <li>You can select rounded radius of input/textarea from the given options.</li>
+                                <li>You want to show the number of input/textarea characters select yes from the given
+                                    options.</li>
+                                <li>You can select the input/textarea theme. </li>
+                                <li>You can select the input/textarea input type. </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Donut</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose1 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <!-- <app-inputform (onclose)="close()"></app-inputform> -->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade details" id="exampleModal12" tabindex="-1" aria-labelledby="Bar chart Details Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Bar Chart</h4>
+                    <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="details-container ">
+                        <h3> Details for the bar chart section are below.</h3>
+                        <p class="pref">Please do follow the below given instructions while creating your bar chart component.</p>
+                        <div class="detail-content">
+                            <ul>
+                                <li>User can enter text for the drawer with 25-250 characters.</li>
+                                <li>User can select the timeframe for which the drawer would appear i.e 1000ms,2000ms or 5000ms.</li>
+                                <li>User can select the direction from where drawer would appear i.e top,bottom,left or right.</li>
+                                <li>User can select the theme of the drawer from the dropdown.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="Bar chart Create Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Bar Chart</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose15 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <app-barchartform (onclose)="close()"></app-barchartform>
+            </div>
+        </div>
+    </div>
+
+
+
+    
+     
+
+</section>

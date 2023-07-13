@@ -2,78 +2,28 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-drawer',
-  templateUrl: './drawer.component.html',
-  styleUrls: ['./drawer.component.scss']
+  selector: 'app-barchart',
+  templateUrl: './barchart.component.html',
+  styleUrls: ['./barchart.component.scss']
 })
-export class DrawerComponent {
-
+export class BarchartComponent {
   title = "";
-  // img1="../assets/images/WellBeingHubLogo.png";
-  // img2="../assets/images/notify.png";
-  // img3="../assets/images/cg_logo.svg";
-  // img4="../assets/images/Capgemini white logo.png";
-  // whitewbh="../assets/images/WBH logo-on dark surface.png";
   closeicon="../assets/images/close.png";
 
-  drawerdata:any;
+  barchartdata:any;
   htmlcontent="active";
   csscontent:any;
   bgcolor:any;
   color:any;
   Copy="Copy";
-  CSS=`.drawer-content {
-    text-align: center;
-    margin: 80px 0px;
-}
+  CSS=`
+  `;
 
-.btn-custom {
-    background-color: #0070AD;
-    color: white;
-}
-
-.btn-custom:focus {
-    border: 2px black solid;
-}
-
-.drawer-slide-low {
-    transition: 1000ms ease-in;
-}
-
-.drawer-slide-medium {
-    transition: 2000ms ease-in;
-}
-
-.drawer-slide-high {
-    transition: 5000ms ease-in;
-}`
-  
   @ViewChild('myModalClose15') modalClose1:any;
-  @ViewChild("drawer") elRef: ElementRef;
+  @ViewChild("barchart") elRef: ElementRef;
 
   constructor(private router: Router, elRef: ElementRef) {
     this.elRef = elRef;
-  }
-  
-  ngOnInit() {
-    if(localStorage.getItem("drawerdata")) {
-      var data1:any =  localStorage.getItem("drawerdata");
-      this.drawerdata = JSON.parse(data1);
-      if(this.drawerdata.color == "Dark"){
-        this.bgcolor="black";
-        this.color="white";
-      } else if(this.drawerdata.color == "Blue"){
-        this.bgcolor="#0070ad";
-        this.color="white";
-      } else if(this.drawerdata.color == "Purple"){
-        this.bgcolor="#2b0a3d";
-        this.color="white";
-      } else if(this.drawerdata.color == "Light"){
-        this.bgcolor="#B7C9E2";
-        this.color="black";
-      }
-
-    }
   }
 
   close(){
@@ -82,6 +32,27 @@ export class DrawerComponent {
 
   backwindow(){
     this.router.navigate(['/modal']);
+  }
+
+  ngOnInit() {
+    if(localStorage.getItem("barchartdata")) {
+      var data1:any =  localStorage.getItem("barchartdata");
+      this.barchartdata = JSON.parse(data1);
+      if(this.barchartdata.color == "Dark"){
+        this.bgcolor="black";
+        this.color="white";
+      } else if(this.barchartdata.color == "Blue"){
+        this.bgcolor="#0070ad";
+        this.color="white";
+      } else if(this.barchartdata.color == "Purple"){
+        this.bgcolor="#2b0a3d";
+        this.color="white";
+      } else if(this.barchartdata.color == "Light"){
+        this.bgcolor="#B7C9E2";
+        this.color="black";
+      }
+
+    }
   }
 
   getHtmlContent() {
@@ -101,7 +72,7 @@ export class DrawerComponent {
     // console.log(formattedCode);
     return formattedCode;
   }
-  
+
   openhtml(){
     this.htmlcontent = "active";
     this.csscontent = "noactive";
@@ -118,5 +89,4 @@ export class DrawerComponent {
         this.Copy="Copy";
     }, 2000);
   }
-
 }

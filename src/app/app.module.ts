@@ -86,6 +86,10 @@ import { PiechartComponent } from './Components/piechart/piechart.component';
 import { PiechartformComponent } from './FormComponents/piechartform/piechartform.component';
 import { EditpiechartComponent } from './FormComponents/editpiechart/editpiechart.component';
 
+import { ChartsComponent } from './Components/charts/charts.component';
+import { BarchartComponent } from './Components/barchart/barchart.component';
+import { BarchartformComponent } from './FormComponents/barchartform/barchartform.component';
+import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchart.component';
 
 @NgModule({
   declarations: [
@@ -160,7 +164,11 @@ import { EditpiechartComponent } from './FormComponents/editpiechart/editpiechar
     ErroroutputComponent,
     PiechartComponent,
     PiechartformComponent,
-    EditpiechartComponent
+    EditpiechartComponent,
+    ChartsComponent,
+    BarchartComponent,
+    BarchartformComponent,
+    EditbarchartComponent
    
   ],
   imports: [
