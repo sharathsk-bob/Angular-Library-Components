@@ -1,1 +1,361 @@
-<p>editpiechart works!</p>
+<div class="modal-body">
+    <p><b>Please fill the mandatory fields according your preference to design accordian</b> </p>
+
+    <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group pt-3">
+        <label>Number of options:</label><span class="star">*</span>
+        <select [(ngModel)]="layout" name="nolayout" aria-label="select no of breakpoint layout" formControlName="nolayout">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <div *ngIf="(f.nolayout.touched || submitted) && f.nolayout.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.nolayout.errors.required">please select an option</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '1'">
+        <label>Text for the title for x-variable 1:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title11" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title11" formControlName="title11" [ngClass]="{ 'is-invalid': submitted && f.title11.errors }" autofocus/>
+        <div *ngIf="(f.title11.touched || submitted) && f.title11.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title11.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title11.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title11.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '1'">
+        <label>Value for y-variable 1:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description11" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description11" formControlName="description11" [ngClass]="{ 'is-invalid': submitted && f.description11.errors }" autofocus/>
+        <div *ngIf="(f.description11.touched || submitted) && f.description11.errors">
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description11.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description11.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description11.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'">
+        <label>Text for the title for  x-variable 1:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title21" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title21" formControlName="title21" [ngClass]="{ 'is-invalid': submitted && f.title21.errors }" autofocus/>
+        <div *ngIf="(f.title21.touched || submitted) && f.title21.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title21.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title21.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title21.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'">
+        <label>Value for y-variable 1:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description21" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description21" formControlName="description21" [ngClass]="{ 'is-invalid': submitted && f.description21.errors }" autofocus/>
+        <div *ngIf="(f.description21.touched || submitted) && f.description21.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description21.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description21.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description21.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'">
+        <label>Text for the title for  x-variable 2:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title22" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title22" formControlName="title22" [ngClass]="{ 'is-invalid': submitted && f.title22.errors }" autofocus/>
+        <div *ngIf="(f.title22.touched || submitted) && f.title22.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title22.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title22.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title22.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'">
+        <label>Value for y-variable 2:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description22" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description22" formControlName="description22" [ngClass]="{ 'is-invalid': submitted && f.description22.errors }" autofocus/>
+        <div *ngIf="(f.description22.touched || submitted) && f.description22.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description22.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description22.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description22.errors.max">>Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Text for the title for  x-variable 1:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title31" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title31" formControlName="title31" [ngClass]="{ 'is-invalid': submitted && f.title31.errors }" autofocus/>
+        <div *ngIf="(f.title31.touched || submitted) && f.title31.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title31.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title31.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title31.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Value for y-variable 1:</label><span class="star">*</span>
+        <input type="number" [(ngModel)]="piechartdata.description31" class="form-control inputbox" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description31" formControlName="description31" [ngClass]="{ 'is-invalid': submitted && f.description31.errors }" autofocus/>
+        <div *ngIf="(f.description31.touched || submitted) && f.description31.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description31.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description31.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description31.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Text for the title for  x-variable 2:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title32" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title32" formControlName="title32" [ngClass]="{ 'is-invalid': submitted && f.title32.errors }" autofocus/>
+        <div *ngIf="(f.title32.touched || submitted) && f.title32.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title32.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title32.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title32.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Value for y-variable 2:</label><span class="star">*</span>
+        <input type="number" [(ngModel)]="piechartdata.description32" class="form-control inputbox" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description32" formControlName="description32" [ngClass]="{ 'is-invalid': submitted && f.description32.errors }" autofocus/>
+        <div *ngIf="(f.description32.touched || submitted) && f.description32.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description32.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description32.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description32.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Text for the title for  x-variable 3:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title33" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title33" formControlName="title33" [ngClass]="{ 'is-invalid': submitted && f.title33.errors }" autofocus/>
+        <div *ngIf="(f.title33.touched || submitted) && f.title33.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title33.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title33.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title33.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'">
+        <label>Value for y-variable 3:</label><span class="star">*</span>
+        <input type="number" [(ngModel)]="piechartdata.description33" class="form-control inputbox" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description33" formControlName="description33" [ngClass]="{ 'is-invalid': submitted && f.description33.errors }" autofocus/>
+        <div *ngIf="(f.description33.touched || submitted) && f.description33.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description33.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description33.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description33.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Text for the title for  x-variable 1:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title1" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title1" formControlName="title1" [ngClass]="{ 'is-invalid': submitted && f.title1.errors }" autofocus/>
+        <div *ngIf="(f.title1.touched || submitted) && f.title1.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title1.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title1.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title1.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Value for y-variable 1:</label><span class="star">*</span>
+        <input type="number" [(ngModel)]="piechartdata.description1" class="form-control inputbox" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description1" formControlName="description1" [ngClass]="{ 'is-invalid': submitted && f.description1.errors }" autofocus/>
+        <div *ngIf="(f.description1.touched || submitted) && f.description1.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description1.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description1.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description1.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Text for the title for  x-variable 2:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title2" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title2" formControlName="title2" [ngClass]="{ 'is-invalid': submitted && f.title2.errors }" autofocus/>
+        <div *ngIf="(f.title2.touched || submitted) && f.title2.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title2.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title2.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title2.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Value for y-variable 2:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description2" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description2" formControlName="description2" [ngClass]="{ 'is-invalid': submitted && f.description2.errors }" autofocus/>
+        <div *ngIf="(f.description2.touched || submitted) && f.description2.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description2.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description2.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description2.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Text for the title for  x-variable 3:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title3" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title3" formControlName="title3" [ngClass]="{ 'is-invalid': submitted && f.title3.errors }" autofocus/>
+        <div *ngIf="(f.title3.touched || submitted) && f.title3.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title3.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title3.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title3.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Value for y-variable 3:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description3" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description3" formControlName="description3" [ngClass]="{ 'is-invalid': submitted && f.description3.errors }" autofocus/>
+        <div *ngIf="(f.description3.touched || submitted) && f.description3.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description3.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description3.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description3.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Text for the title for  x-variable 4:</label><span class="star">*</span>
+        <input type="text" [(ngModel)]="piechartdata.title4" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title4" formControlName="title4" [ngClass]="{ 'is-invalid': submitted && f.title4.errors }" autofocus/>
+        <div *ngIf="(f.title4.touched || submitted) && f.title4.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title4.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title4.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title4.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '4'">
+        <label>Value for y-variable 4:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description4" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description4" formControlName="description4" [ngClass]="{ 'is-invalid': submitted && f.description4.errors }" autofocus/>
+        <div *ngIf="(f.description4.touched || submitted) && f.description4.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description4.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description4.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description4.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+    
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Text for the title for  x-variable 1:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title51" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title51" formControlName="title51" [ngClass]="{ 'is-invalid': submitted && f.title51.errors }" autofocus/>
+        <div *ngIf="(f.title51.touched || submitted) && f.title51.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title51.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title51.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title51.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Value for y-variable 1:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description51" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description51" formControlName="description51" [ngClass]="{ 'is-invalid': submitted && f.description51.errors }" autofocus/>
+        <div *ngIf="(f.description51.touched || submitted) && f.description51.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description51.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description51.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description51.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Text for the title for  x-variable 2:</label><span class="star">*</span>
+        <input type="text" maxlength="100" class="form-control inputbox" [(ngModel)]="piechartdata.title52" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title52" formControlName="title52" [ngClass]="{ 'is-invalid': submitted && f.title52.errors }" autofocus/>
+        <div *ngIf="(f.title52.touched || submitted) && f.title52.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title52.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title52.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title52.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Value for y-variable 2:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description52" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description52" formControlName="description52" [ngClass]="{ 'is-invalid': submitted && f.description52.errors }" autofocus/>
+        <div *ngIf="(f.description52.touched || submitted) && f.description52.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description52.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description52.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description52.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Text for the title for  x-variable 3:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title53" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title53" formControlName="title53" [ngClass]="{ 'is-invalid': submitted && f.title53.errors }" autofocus/>
+        <div *ngIf="(f.title53.touched || submitted) && f.title53.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title53.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title53.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title53.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Value for y-variable 3:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description53" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description53" formControlName="description53" [ngClass]="{ 'is-invalid': submitted && f.description53.errors }" autofocus/>
+        <div *ngIf="(f.description53.touched || submitted) && f.description53.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description53.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description53.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description53.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Text for the title for  x-variable 4:</label><span class="star">*</span>
+        <input type="text" maxlength="100" [(ngModel)]="piechartdata.title54" class="form-control inputbox" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title54" formControlName="title54" [ngClass]="{ 'is-invalid': submitted && f.title4.errors }" autofocus/>
+        <div *ngIf="(f.title54.touched || submitted) && f.title54.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title54.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title54.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title54.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Value for y-variable 4:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description54" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description54" formControlName="description54" [ngClass]="{ 'is-invalid': submitted && f.description54.errors }" autofocus/>
+        <div *ngIf="(f.description54.touched || submitted) && f.description54.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description54.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description54.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description54.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Text for the title for  x-variable 5:</label><span class="star">*</span>
+        <input type="text" maxlength="100" class="form-control inputbox" [(ngModel)]="piechartdata.title55" aria-describedby="Text for the title for breakpoint layout 1" aria-required="true" placeholder="Please enter title" name="title55" formControlName="title55" [ngClass]="{ 'is-invalid': submitted && f.title55.errors }" autofocus/>
+        <div *ngIf="(f.title55.touched || submitted) && f.title55.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.title55.errors.required">please enter title</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.title55.errors.minlength">Minimum 3 word required for title</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.title55.errors.maxlength">maxlength 15 for title</div>
+        </div>
+    </div>
+
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '5'">
+        <label>Value for y-variable 5:</label><span class="star">*</span>
+        <input type="number" class="form-control inputbox" [(ngModel)]="piechartdata.description55" aria-describedby="Text for the description for breakpoint layout 1" aria-required="true" placeholder="Please enter description" name="description55" formControlName="description55" [ngClass]="{ 'is-invalid': submitted && f.description55.errors }" autofocus/>
+        <div *ngIf="(f.description55.touched || submitted) && f.description55.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.description55.errors.required">Please enter Value</div>
+            <div class="error" role="alert" aria-atomic="true"   *ngIf="f.description55.errors.min">Minimum value is 1</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f.description55.errors.max">Maximum value is 1000</div>
+        </div>
+    </div>
+
+    <div class="pt-3">
+        <label class="accessbility">Please choose the size</label><span class="star">*</span>
+        <div class="form-group d-flex align-items-center shadow-sec background">
+            <select class="symbol" name="symbol" [(ngModel)]="piechartdata.symbol" aria-label="select symbol" formControlName="symbol">
+                <option>small</option>
+                <option>medium</option>
+                <option>large</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="footerbutton">
+        <button  class="submitbutton">
+            Update
+        </button>
+    </div>
+
+    </form>
+</div>

@@ -53,8 +53,7 @@ export class PiechartformComponent {
       description3:[''],
       title4:[''],
       description4:[''],
-      color:['light',[Validators.required]],
-      symbol:['Plus',[Validators.required]]
+      symbol:['small',[Validators.required]]
     });
 
     this.registerForm.get("nolayout")?.valueChanges.subscribe((result)=>{
@@ -364,13 +363,12 @@ export class PiechartformComponent {
         "description54":this.registerForm.value.description54,
         "title55":this.registerForm.value.title55,
         "description55":this.registerForm.value.description55,
-        "color":this.registerForm.value.color,
         "symbol":this.registerForm.value.symbol
       };
 
       
       this.onclose.emit();
-      localStorage.setItem("accordiandata",JSON.stringify(data));
+      localStorage.setItem("piechartdata",JSON.stringify(data));
       this.router.navigate(['component/piechart']);
     }
   }
