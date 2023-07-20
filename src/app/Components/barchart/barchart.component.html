@@ -9,12 +9,14 @@
         </div> 
     </div>
         <!-- <p>barchart works!</p> -->
-        <div #barchart class="drawer-content">
-
-        
-
+        <div #barchart [ngClass]="[barchartdata.size=='Small'?'barchart-smcontent': barchartdata.size=='Medium'?'barchart-mdcontent':barchartdata.size=='Large'?'barchart-lgcontent':'']">
+            <canvas baseChart class="chart"
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [type]="barChartType">
+            </canvas> 
         </div>
-
         <!-- <ul class="list-inline">
             <li (click)="openhtml()"><button [class]="htmlcontent">HTML</button></li>
             <li (click)="opencss()"><button [class]="csscontent">CSS</button></li>

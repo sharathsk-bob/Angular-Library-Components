@@ -28,7 +28,7 @@ export class ChartsComponent {
 ];
  
 formsubheading = "This components help to create and customize the";
-closeicon="../assets/images/close.png";
+closeicon="../../assets/images/close.png";
 
 
 close(){

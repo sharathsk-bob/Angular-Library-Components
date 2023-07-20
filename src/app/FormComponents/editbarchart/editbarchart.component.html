@@ -5,8 +5,8 @@
 
         <div class="form-group pt-3">
             <label>Number of bars: </label><span class="star">*</span>
-            <select name="nolayout" aria-label="select number of bars" formControlName="nobars">
-                <option>--Select--</option>
+            <select [(ngModel)]="barchartdata.nobars" name="nobars" aria-label="select number of bars" formControlName="nobars">
+                <!-- <option>--Select--</option> -->
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -21,204 +21,204 @@
         <!-- For Bar = 1 -->
         <div class="form-group pt-3" *ngIf="f.nobars.value == '1'">
             <label>Text for the title of bar 1: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle11" formControlName="btitle11" [ngClass]="{ 'is-invalid': submitted && f.btitle11.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle11" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle11" formControlName="btitle11" [ngClass]="{ 'is-invalid': submitted && f.btitle11.errors }" autofocus/>
             <div *ngIf="(f.btitle11.touched || submitted) && f.btitle11.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle11.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle11.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle11.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle11.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle11.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '1'">
             <label>Value for bar 1:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue11" formControlName="bvalue11" [ngClass]="{ 'is-invalid': submitted && f.bvalue11.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue11" type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue11" formControlName="bvalue11" [ngClass]="{ 'is-invalid': submitted && f.bvalue11.errors }" autofocus/>
             <div *ngIf="(f.bvalue11.touched || submitted) && f.bvalue11.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue11.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
         <!-- For Bar = 2 -->
         <div class="form-group pt-3" *ngIf="f.nobars.value == '2'">
             <label>Text for the title of bar 1: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle21" formControlName="btitle21" [ngClass]="{ 'is-invalid': submitted && f.btitle21.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle21" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle21" formControlName="btitle21" [ngClass]="{ 'is-invalid': submitted && f.btitle21.errors }" autofocus/>
             <div *ngIf="(f.btitle21.touched || submitted) && f.btitle21.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle21.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle21.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle21.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle21.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle21.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '2'">
             <label>Value for bar 1:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue21" formControlName="bvalue21" [ngClass]="{ 'is-invalid': submitted && f.bvalue21.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue21" type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue21" formControlName="bvalue21" [ngClass]="{ 'is-invalid': submitted && f.bvalue21.errors }" autofocus/>
             <div *ngIf="(f.bvalue21.touched || submitted) && f.bvalue21.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue21.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '2'">
             <label>Text for the title of bar 2: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle22" formControlName="btitle22" [ngClass]="{ 'is-invalid': submitted && f.btitle22.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle22" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle22" formControlName="btitle22" [ngClass]="{ 'is-invalid': submitted && f.btitle22.errors }" autofocus/>
             <div *ngIf="(f.btitle22.touched || submitted) && f.btitle22.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle22.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle22.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle22.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle22.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle22.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '2'">
             <label>Value for bar 2:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue22" formControlName="bvalue22" [ngClass]="{ 'is-invalid': submitted && f.bvalue22.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue22" type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue22" formControlName="bvalue22" [ngClass]="{ 'is-invalid': submitted && f.bvalue22.errors }" autofocus/>
             <div *ngIf="(f.bvalue22.touched || submitted) && f.bvalue22.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue22.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
         <!-- For Bar = 3 -->
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Text for the title of bar 1: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle31" formControlName="btitle31" [ngClass]="{ 'is-invalid': submitted && f.btitle31.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle31" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle31" formControlName="btitle31" [ngClass]="{ 'is-invalid': submitted && f.btitle31.errors }" autofocus/>
             <div *ngIf="(f.btitle31.touched || submitted) && f.btitle31.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle31.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle31.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle31.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle31.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle31.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Value for bar 1:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue31" formControlName="bvalue31" [ngClass]="{ 'is-invalid': submitted && f.bvalue31.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue31" type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue31" formControlName="bvalue31" [ngClass]="{ 'is-invalid': submitted && f.bvalue31.errors }" autofocus/>
             <div *ngIf="(f.bvalue31.touched || submitted) && f.bvalue31.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue31.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Text for the title of bar 2: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle32" formControlName="btitle32" [ngClass]="{ 'is-invalid': submitted && f.btitle32.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle32" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle32" formControlName="btitle32" [ngClass]="{ 'is-invalid': submitted && f.btitle32.errors }" autofocus/>
             <div *ngIf="(f.btitle32.touched || submitted) && f.btitle32.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle32.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle32.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle32.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle32.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle32.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Value for bar 2:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue32" formControlName="bvalue32" [ngClass]="{ 'is-invalid': submitted && f.bvalue32.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue32" type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue32" formControlName="bvalue32" [ngClass]="{ 'is-invalid': submitted && f.bvalue32.errors }" autofocus/>
             <div *ngIf="(f.bvalue32.touched || submitted) && f.bvalue32.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue32.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Text for the title of bar 3: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle33" formControlName="btitle33" [ngClass]="{ 'is-invalid': submitted && f.btitle33.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle33" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle33" formControlName="btitle33" [ngClass]="{ 'is-invalid': submitted && f.btitle33.errors }" autofocus/>
             <div *ngIf="(f.btitle33.touched || submitted) && f.btitle33.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle33.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle33.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle33.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle33.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle33.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '3'">
             <label>Value for bar 3:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue33" formControlName="bvalue33" [ngClass]="{ 'is-invalid': submitted && f.bvalue33.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue33" type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue33" formControlName="bvalue33" [ngClass]="{ 'is-invalid': submitted && f.bvalue33.errors }" autofocus/>
             <div *ngIf="(f.bvalue33.touched || submitted) && f.bvalue33.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue33.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
         <!-- For Bar = 4 -->
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Text for the title of bar 1: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle41" formControlName="btitle41" [ngClass]="{ 'is-invalid': submitted && f.btitle41.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle41" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle41" formControlName="btitle41" [ngClass]="{ 'is-invalid': submitted && f.btitle41.errors }" autofocus/>
             <div *ngIf="(f.btitle41.touched || submitted) && f.btitle41.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle41.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle41.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle41.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle41.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle41.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Value for bar 1:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue41" formControlName="bvalue41" [ngClass]="{ 'is-invalid': submitted && f.bvalue41.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue41" type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue41" formControlName="bvalue41" [ngClass]="{ 'is-invalid': submitted && f.bvalue41.errors }" autofocus/>
             <div *ngIf="(f.bvalue41.touched || submitted) && f.bvalue41.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue41.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Text for the title of bar 2: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle42" formControlName="btitle42" [ngClass]="{ 'is-invalid': submitted && f.btitle42.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle42" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle42" formControlName="btitle42" [ngClass]="{ 'is-invalid': submitted && f.btitle42.errors }" autofocus/>
             <div *ngIf="(f.btitle42.touched || submitted) && f.btitle42.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle42.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle42.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle42.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle42.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle42.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Value for bar 2:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue42" formControlName="bvalue42" [ngClass]="{ 'is-invalid': submitted && f.bvalue42.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue42" type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue42" formControlName="bvalue42" [ngClass]="{ 'is-invalid': submitted && f.bvalue42.errors }" autofocus/>
             <div *ngIf="(f.bvalue42.touched || submitted) && f.bvalue42.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue42.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Text for the title of bar 3: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle43" formControlName="btitle43" [ngClass]="{ 'is-invalid': submitted && f.btitle43.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle43" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle43" formControlName="btitle43" [ngClass]="{ 'is-invalid': submitted && f.btitle43.errors }" autofocus/>
             <div *ngIf="(f.btitle43.touched || submitted) && f.btitle43.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle43.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle43.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle43.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle43.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle43.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Value for bar 3:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue43" formControlName="bvalue43" [ngClass]="{ 'is-invalid': submitted && f.bvalue43.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue43" type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue43" formControlName="bvalue43" [ngClass]="{ 'is-invalid': submitted && f.bvalue43.errors }" autofocus/>
             <div *ngIf="(f.bvalue43.touched || submitted) && f.bvalue43.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue43.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Text for the title of bar 4: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 4" aria-required="true" placeholder="Text for the title of bar 4" name="btitle44" formControlName="btitle44" [ngClass]="{ 'is-invalid': submitted && f.btitle44.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle44" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 4" aria-required="true" placeholder="Text for the title of bar 4" name="btitle44" formControlName="btitle44" [ngClass]="{ 'is-invalid': submitted && f.btitle44.errors }" autofocus/>
             <div *ngIf="(f.btitle44.touched || submitted) && f.btitle44.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle44.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle44.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle44.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle44.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle44.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '4'">
             <label>Value for bar 4:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 4" aria-required="true" placeholder="Value for bar 4" name="bvalue44" formControlName="bvalue44" [ngClass]="{ 'is-invalid': submitted && f.bvalue44.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue44" type="number" class="form-control inputbox" aria-describedby="Value for bar 4" aria-required="true" placeholder="Value for bar 4" name="bvalue44" formControlName="bvalue44" [ngClass]="{ 'is-invalid': submitted && f.bvalue44.errors }" autofocus/>
             <div *ngIf="(f.bvalue44.touched || submitted) && f.bvalue44.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue44.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
@@ -226,108 +226,108 @@
 
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Text for the title of bar 1: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle51" formControlName="btitle51" [ngClass]="{ 'is-invalid': submitted && f.btitle51.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle51" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 1" aria-required="true" placeholder="Text for the title of bar 1" name="btitle51" formControlName="btitle51" [ngClass]="{ 'is-invalid': submitted && f.btitle51.errors }" autofocus/>
             <div *ngIf="(f.btitle51.touched || submitted) && f.btitle51.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle51.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle51.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle51.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle51.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle51.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Value for bar 1:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue51" formControlName="bvalue51" [ngClass]="{ 'is-invalid': submitted && f.bvalue51.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue51" type="number" class="form-control inputbox" aria-describedby="Value for bar 1" aria-required="true" placeholder="Value for bar 1" name="bvalue51" formControlName="bvalue51" [ngClass]="{ 'is-invalid': submitted && f.bvalue51.errors }" autofocus/>
             <div *ngIf="(f.bvalue51.touched || submitted) && f.bvalue51.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue51.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Text for the title of bar 2: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle52" formControlName="btitle52" [ngClass]="{ 'is-invalid': submitted && f.btitle52.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle52" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 2" aria-required="true" placeholder="Text for the title of bar 2" name="btitle52" formControlName="btitle52" [ngClass]="{ 'is-invalid': submitted && f.btitle52.errors }" autofocus/>
             <div *ngIf="(f.btitle52.touched || submitted) && f.btitle52.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle52.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle52.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle52.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle52.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle52.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Value for bar 2:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue52" formControlName="bvalue52" [ngClass]="{ 'is-invalid': submitted && f.bvalue52.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue52" type="number" class="form-control inputbox" aria-describedby="Value for bar 2" aria-required="true" placeholder="Value for bar 2" name="bvalue52" formControlName="bvalue52" [ngClass]="{ 'is-invalid': submitted && f.bvalue52.errors }" autofocus/>
             <div *ngIf="(f.bvalue52.touched || submitted) && f.bvalue52.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue52.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Text for the title of bar 3: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle53" formControlName="btitle53" [ngClass]="{ 'is-invalid': submitted && f.btitle53.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle53" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 3" aria-required="true" placeholder="Text for the title of bar 3" name="btitle53" formControlName="btitle53" [ngClass]="{ 'is-invalid': submitted && f.btitle53.errors }" autofocus/>
             <div *ngIf="(f.btitle53.touched || submitted) && f.btitle53.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle53.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle53.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle53.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle53.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle53.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Value for bar 3:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue53" formControlName="bvalue53" [ngClass]="{ 'is-invalid': submitted && f.bvalue53.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue53" type="number" class="form-control inputbox" aria-describedby="Value for bar 3" aria-required="true" placeholder="Value for bar 3" name="bvalue53" formControlName="bvalue53" [ngClass]="{ 'is-invalid': submitted && f.bvalue53.errors }" autofocus/>
             <div *ngIf="(f.bvalue53.touched || submitted) && f.bvalue53.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue53.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Text for the title of bar 4: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 4" aria-required="true" placeholder="Text for the title of bar 4" name="btitle54" formControlName="btitle54" [ngClass]="{ 'is-invalid': submitted && f.btitle54.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle54" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 4" aria-required="true" placeholder="Text for the title of bar 4" name="btitle54" formControlName="btitle54" [ngClass]="{ 'is-invalid': submitted && f.btitle54.errors }" autofocus/>
             <div *ngIf="(f.btitle54.touched || submitted) && f.btitle54.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle54.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle54.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle54.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle54.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle54.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Value for bar 4:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 4" aria-required="true" placeholder="Value for bar 4" name="bvalue54" formControlName="bvalue54" [ngClass]="{ 'is-invalid': submitted && f.bvalue54.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue54" type="number" class="form-control inputbox" aria-describedby="Value for bar 4" aria-required="true" placeholder="Value for bar 4" name="bvalue54" formControlName="bvalue54" [ngClass]="{ 'is-invalid': submitted && f.bvalue54.errors }" autofocus/>
             <div *ngIf="(f.bvalue54.touched || submitted) && f.bvalue54.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue54.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Text for the title of bar 5: </label><span class="star">*</span>
-            <input type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 5" aria-required="true" placeholder="Text for the title of bar 5" name="btitle55" formControlName="btitle55" [ngClass]="{ 'is-invalid': submitted && f.btitle55.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.btitle55" type="text" maxlength="15" class="form-control inputbox" aria-describedby="Text for the title of bar 5" aria-required="true" placeholder="Text for the title of bar 5" name="btitle55" formControlName="btitle55" [ngClass]="{ 'is-invalid': submitted && f.btitle55.errors }" autofocus/>
             <div *ngIf="(f.btitle55.touched || submitted) && f.btitle55.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle55.errors.required">please enter title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle55.errors.required">Please enter title</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle55.errors.minlength">Minimum 3 word required for title</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle55.errors.maxlength">maxlength 15 for title</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.btitle55.errors.maxlength">Maximum 15 word allowed for title</div>
             </div>
         </div>
     
         <div class="form-group pt-3" *ngIf="f.nobars.value == '5'">
             <label>Value for bar 5:</label><span class="star">*</span>
-            <input type="number" class="form-control inputbox" aria-describedby="Value for bar 5" aria-required="true" placeholder="Value for bar 5" name="bvalue55" formControlName="bvalue55" [ngClass]="{ 'is-invalid': submitted && f.bvalue55.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.bvalue55" type="number" class="form-control inputbox" aria-describedby="Value for bar 5" aria-required="true" placeholder="Value for bar 5" name="bvalue55" formControlName="bvalue55" [ngClass]="{ 'is-invalid': submitted && f.bvalue55.errors }" autofocus/>
             <div *ngIf="(f.bvalue55.touched || submitted) && f.bvalue55.errors" >
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.required">Please enter description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.minlength">Minimum 3 word required for description</div>
-                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.maxlength">maxlength 100 for description</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.required">Please enter value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.min">Minimum 0 required for value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f.bvalue55.errors.max">Maximum 1000 allowed for value</div>
             </div>
         </div>
 
 
         <div class="form-group pt-3">
             <label>Title for X-axis: </label><span class="star">*</span>
-            <input type="text" maxlength="25" class="form-control inputbox" aria-describedby="title for X-axis" aria-required="true" placeholder="Please enter title for X-axis" name="xaxistitle" formControlName="xaxistitle" [ngClass]="{ 'is-invalid': submitted && f.xaxistitle.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.xaxistitle" type="text" maxlength="25" class="form-control inputbox" aria-describedby="title for X-axis" aria-required="true" placeholder="Please enter title for X-axis" name="xaxistitle" formControlName="xaxistitle" [ngClass]="{ 'is-invalid': submitted && f.xaxistitle.errors }" autofocus/>
             <div class="invalid-feedback" *ngIf="(f.xaxistitle.touched || submitted) && f.xaxistitle.errors" >
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.xaxistitle.errors.required">X-axis title is required</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.xaxistitle.errors.minlength">Minimum length of 3 required for X-axis title</div>
@@ -337,7 +337,7 @@
 
         <div class="form-group pt-3">
             <label>Title for Y-axis: </label><span class="star">*</span>
-            <input type="text" maxlength="25" class="form-control inputbox" aria-describedby="title for Y-axis" aria-required="true" placeholder="Please enter title for Y-axis" name="yaxistitle" formControlName="yaxistitle" [ngClass]="{ 'is-invalid': submitted && f.yaxistitle.errors }" autofocus/>
+            <input [(ngModel)]="barchartdata.yaxistitle" type="text" maxlength="25" class="form-control inputbox" aria-describedby="title for Y-axis" aria-required="true" placeholder="Please enter title for Y-axis" name="yaxistitle" formControlName="yaxistitle" [ngClass]="{ 'is-invalid': submitted && f.yaxistitle.errors }" autofocus/>
             <div class="invalid-feedback" *ngIf="(f.yaxistitle.touched || submitted) && f.yaxistitle.errors" >
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.yaxistitle.errors.required">Y-axis title  is required</div>
                 <div class="error" role="alert" aria-atomic="true" *ngIf="f.yaxistitle.errors.minlength">Minimum length of 3 required for Y-axis title</div>
@@ -345,11 +345,10 @@
             </div>
         </div>
 
-
         <div class="pt-3">
             <label class="accessbility">Please select timeout value for drawer </label><span class="star">*</span>
             <div class="form-group d-flex align-items-center shadow-sec background">
-                <select class="bgcolor" name="timeout" aria-label="select size for bar chart" formControlName="size">
+                <select [(ngModel)]="barchartdata.size" class="bgcolor" name="timeout" aria-label="select size for bar chart" formControlName="size">
                     <option>Small</option>
                     <option>Medium</option>
                     <option>Large</option>
@@ -357,21 +356,9 @@
             </div>
         </div>
 
-        <div class="pt-3">
-            <label class="accessbility">Please select Theme color </label><span class="star">*</span>
-            <div class="form-group d-flex align-items-center shadow-sec background">
-                <select class="bgcolor" name="color" aria-label="select theme color" formControlName="color">
-                    <option>Light</option>
-                    <option>Dark</option>
-                    <option>Blue</option>
-                    <option>Purple</option>
-                </select>
-            </div>
-        </div>
-
         <div class="footerbutton">
             <button class="submitbutton">
-                Create
+                Update
             </button>
         </div>
     </form>

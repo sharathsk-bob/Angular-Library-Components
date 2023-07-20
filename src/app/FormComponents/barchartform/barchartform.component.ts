@@ -24,6 +24,7 @@ export class BarchartformComponent {
       // image1:['', [Validators.required]],
       // title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       nobars:['--Select--',[Validators.required]],
+      blegend1:[''],
       btitle11:[''],
       bvalue11:[''],
       btitle21:[''],
@@ -36,6 +37,7 @@ export class BarchartformComponent {
       bvalue32:[''],
       btitle33:[''],
       bvalue33:[''],
+      btitle41:[''],
       bvalue41:[''],
       btitle42:[''],
       bvalue42:[''],
@@ -43,6 +45,7 @@ export class BarchartformComponent {
       bvalue43:[''],
       btitle44:[''],
       bvalue44:[''],
+      btitle51:[''],
       bvalue51:[''],
       btitle52:[''],
       bvalue52:[''],
@@ -56,7 +59,7 @@ export class BarchartformComponent {
       xaxistitle:['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       yaxistitle:['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       size: ['Small', [Validators.required]],
-      color: ['Light', [Validators.required]],
+      // color: ['Light', [Validators.required]],
     });
 
     this.barchartForm.get("nobars")?.valueChanges.subscribe((result)=>{
@@ -64,8 +67,8 @@ export class BarchartformComponent {
       // console.log("Anand",result);
 
       if(result == 1) {
-        this.barchartForm.get("btitle11")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue11")?.setValidators([Validators.required]);
+        this.barchartForm.get("btitle11")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue11")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
         this.barchartForm.get("btitle51")?.clearValidators();
         this.barchartForm.get("bvalue51")?.clearValidators();
@@ -127,10 +130,10 @@ export class BarchartformComponent {
         this.barchartForm.get("btitle22")?.setValue("");
         this.barchartForm.get("bvalue22")?.setValue("");
       } else if(result == 2){ 
-        this.barchartForm.get("btitle21")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue21")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle22")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue22")?.setValidators([Validators.required]);
+        this.barchartForm.get("btitle21")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue21")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle22")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue22")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
         this.barchartForm.get("btitle51")?.clearValidators();
         this.barchartForm.get("bvalue51")?.clearValidators();
@@ -188,12 +191,12 @@ export class BarchartformComponent {
         this.barchartForm.get("btitle11")?.setValue("");
         this.barchartForm.get("bvalue11")?.setValue("");
       } else if(result == 3){
-        this.barchartForm.get("btitle31")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue31")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle32")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue32")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle33")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue33")?.setValidators([Validators.required]);
+        this.barchartForm.get("btitle31")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue31")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle32")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue32")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle33")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue33")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
         this.barchartForm.get("btitle51")?.clearValidators();
         this.barchartForm.get("bvalue51")?.clearValidators();
@@ -248,14 +251,14 @@ export class BarchartformComponent {
         this.barchartForm.get("bvalue11")?.setValue("");
 
       } else if(result == 4){
-        this.barchartForm.get("btitle41")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue41")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle42")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue42")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle43")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue43")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle44")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue44")?.setValidators([Validators.required]);
+        this.barchartForm.get("btitle41")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue41")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle42")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue42")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle43")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue43")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle44")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue44")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
         this.barchartForm.get("btitle51")?.clearValidators();
         this.barchartForm.get("bvalue51")?.clearValidators();
@@ -305,16 +308,16 @@ export class BarchartformComponent {
         this.barchartForm.get("btitle11")?.setValue("");
         this.barchartForm.get("bvalue11")?.setValue("");
       } else if(result == 5){
-        this.barchartForm.get("btitle51")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue51")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle52")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue52")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle53")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue53")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle54")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue54")?.setValidators([Validators.required]);
-        this.barchartForm.get("btitle55")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue55")?.setValidators([Validators.required]);
+        this.barchartForm.get("btitle51")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue51")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle52")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue52")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle53")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue53")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle54")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue54")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("btitle55")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+        this.barchartForm.get("bvalue55")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
         this.barchartForm.get("btitle41")?.clearValidators();
         this.barchartForm.get("bvalue41")?.clearValidators();
@@ -443,6 +446,7 @@ export class BarchartformComponent {
       this.onclose.emit();
       const data = {
         "nobars":this.barchartForm.value.nobars,
+        "blegend1":this.barchartForm.value.blegend1,
         "btitle11":this.barchartForm.value.btitle11,
         "bvalue11":this.barchartForm.value.bvalue11,
         "btitle21":this.barchartForm.value.btitle21,
@@ -475,8 +479,8 @@ export class BarchartformComponent {
         "bvalue55":this.barchartForm.value.bvalue55,
         "xaxistitle":this.barchartForm.value.xaxistitle,
         "yaxistitle":this.barchartForm.value.yaxistitle,
-        "size":this.barchartForm.value.size,
-        "color":this.barchartForm.value.color
+        "size":this.barchartForm.value.size
+        // "color":this.barchartForm.value.color
       }
       console.log("Angular check Data>>",data);
       localStorage.setItem("barchartdata",JSON.stringify(data));
