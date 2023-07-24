@@ -18,7 +18,8 @@ export class BarchartComponent {
   xTitle: string;
   barchartdata:any;
   barChartOptions: any;
-  barChartData: any;
+  singleChartData: any;
+  columnChartData: any;
   htmlcontent="active";
   csscontent:any;
   bgcolor:any;
@@ -56,42 +57,167 @@ export class BarchartComponent {
 
       let titleArray = [];
       let valueArray = [];
-      if(this.barchartdata.nobars == 1){
-        titleArray.push(this.barchartdata.btitle11);
-        valueArray.push(this.barchartdata.bvalue11);
-      } else if ( this.barchartdata.nobars == 2) {
-        titleArray.push(this.barchartdata.btitle21);
-        titleArray.push(this.barchartdata.btitle22);
-        valueArray.push(this.barchartdata.bvalue21);
-        valueArray.push(this.barchartdata.bvalue22);
-      } else if ( this.barchartdata.nobars == 3) {
-        titleArray.push(this.barchartdata.btitle31);
-        titleArray.push(this.barchartdata.btitle32);
-        titleArray.push(this.barchartdata.btitle33);
-        valueArray.push(this.barchartdata.bvalue31);
-        valueArray.push(this.barchartdata.bvalue32);
-        valueArray.push(this.barchartdata.bvalue33);
-      } else if ( this.barchartdata.nobars == 4) {
-        titleArray.push(this.barchartdata.btitle41);
-        titleArray.push(this.barchartdata.btitle42);
-        titleArray.push(this.barchartdata.btitle43);
-        titleArray.push(this.barchartdata.btitle44);
-        valueArray.push(this.barchartdata.bvalue41);
-        valueArray.push(this.barchartdata.bvalue42);
-        valueArray.push(this.barchartdata.bvalue43);
-        valueArray.push(this.barchartdata.bvalue44);
-      } else if ( this.barchartdata.nobars == 5) {
-        titleArray.push(this.barchartdata.btitle51);
-        titleArray.push(this.barchartdata.btitle52);
-        titleArray.push(this.barchartdata.btitle53);
-        titleArray.push(this.barchartdata.btitle54);
-        titleArray.push(this.barchartdata.btitle55);
-        valueArray.push(this.barchartdata.bvalue51);
-        valueArray.push(this.barchartdata.bvalue52);
-        valueArray.push(this.barchartdata.bvalue53);
-        valueArray.push(this.barchartdata.bvalue54);
-        valueArray.push(this.barchartdata.bvalue55);
+      let legend1valueArray = [];
+      let legend2valueArray = [];
+      let legend3valueArray = [];
+      let legend4valueArray = [];
+      let legend5valueArray = [];
+
+      if(this.barchartdata.barchartType == 'Column') {
+        if(this.barchartdata.nobars >= 5){
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          titleArray.push(this.barchartdata.btitle4);
+          titleArray.push(this.barchartdata.btitle5);
+          legend1valueArray.push(this.barchartdata.bvalue201);
+          legend2valueArray.push(this.barchartdata.bvalue211);
+          legend1valueArray.push(this.barchartdata.bvalue202);
+          legend2valueArray.push(this.barchartdata.bvalue212);
+          legend1valueArray.push(this.barchartdata.bvalue203);
+          legend2valueArray.push(this.barchartdata.bvalue213);
+          legend1valueArray.push(this.barchartdata.bvalue204);
+          legend2valueArray.push(this.barchartdata.bvalue214);
+          legend1valueArray.push(this.barchartdata.bvalue205);
+          legend2valueArray.push(this.barchartdata.bvalue215);
+  
+          legend3valueArray.push(this.barchartdata.bvalue221);
+          legend3valueArray.push(this.barchartdata.bvalue222);
+          legend3valueArray.push(this.barchartdata.bvalue223);
+          legend3valueArray.push(this.barchartdata.bvalue224);
+          legend3valueArray.push(this.barchartdata.bvalue225);
+          legend4valueArray.push(this.barchartdata.bvalue231);
+          legend4valueArray.push(this.barchartdata.bvalue232);
+          legend4valueArray.push(this.barchartdata.bvalue233);
+          legend4valueArray.push(this.barchartdata.bvalue234);
+          legend4valueArray.push(this.barchartdata.bvalue235);
+          legend5valueArray.push(this.barchartdata.bvalue241);
+          legend5valueArray.push(this.barchartdata.bvalue242);
+          legend5valueArray.push(this.barchartdata.bvalue243);
+          legend5valueArray.push(this.barchartdata.bvalue244);
+          legend5valueArray.push(this.barchartdata.bvalue245);
+        } else if ( this.barchartdata.nobars >= 4) {
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          titleArray.push(this.barchartdata.btitle4);
+          legend1valueArray.push(this.barchartdata.bvalue201);
+          legend2valueArray.push(this.barchartdata.bvalue211);
+          legend1valueArray.push(this.barchartdata.bvalue202);
+          legend2valueArray.push(this.barchartdata.bvalue212);
+          legend1valueArray.push(this.barchartdata.bvalue203);
+          legend2valueArray.push(this.barchartdata.bvalue213);
+          legend1valueArray.push(this.barchartdata.bvalue204);
+          legend2valueArray.push(this.barchartdata.bvalue214);
+          legend3valueArray.push(this.barchartdata.bvalue221);
+          legend3valueArray.push(this.barchartdata.bvalue222);
+          legend3valueArray.push(this.barchartdata.bvalue223);
+          legend3valueArray.push(this.barchartdata.bvalue224);
+          legend4valueArray.push(this.barchartdata.bvalue231);
+          legend4valueArray.push(this.barchartdata.bvalue232);
+          legend4valueArray.push(this.barchartdata.bvalue233);
+          legend4valueArray.push(this.barchartdata.bvalue234);
+          legend5valueArray.push(this.barchartdata.bvalue241);
+          legend5valueArray.push(this.barchartdata.bvalue242);
+          legend5valueArray.push(this.barchartdata.bvalue243);
+          legend5valueArray.push(this.barchartdata.bvalue244);
+        } else if ( this.barchartdata.nobars >= 3) {
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          legend1valueArray.push(this.barchartdata.bvalue201);
+          legend2valueArray.push(this.barchartdata.bvalue211);
+          legend1valueArray.push(this.barchartdata.bvalue202);
+          legend2valueArray.push(this.barchartdata.bvalue212);
+          legend1valueArray.push(this.barchartdata.bvalue203);
+          legend2valueArray.push(this.barchartdata.bvalue213);
+          legend3valueArray.push(this.barchartdata.bvalue221);
+          legend3valueArray.push(this.barchartdata.bvalue222);
+          legend3valueArray.push(this.barchartdata.bvalue223);
+          legend4valueArray.push(this.barchartdata.bvalue231);
+          legend4valueArray.push(this.barchartdata.bvalue232);
+          legend4valueArray.push(this.barchartdata.bvalue233);
+          legend5valueArray.push(this.barchartdata.bvalue241);
+          legend5valueArray.push(this.barchartdata.bvalue242);
+          legend5valueArray.push(this.barchartdata.bvalue243);
+        } else if ( this.barchartdata.nobars >= 2) {
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          legend1valueArray.push(this.barchartdata.bvalue201);
+          legend2valueArray.push(this.barchartdata.bvalue211);
+          legend1valueArray.push(this.barchartdata.bvalue202);
+          legend2valueArray.push(this.barchartdata.bvalue212);
+          legend3valueArray.push(this.barchartdata.bvalue221);
+          legend3valueArray.push(this.barchartdata.bvalue222);
+          legend4valueArray.push(this.barchartdata.bvalue231);
+          legend4valueArray.push(this.barchartdata.bvalue232);
+          legend5valueArray.push(this.barchartdata.bvalue241);
+          legend5valueArray.push(this.barchartdata.bvalue242);
+        } else if ( this.barchartdata.nobars >= 1) {
+          titleArray.push(this.barchartdata.btitle51);
+          titleArray.push(this.barchartdata.btitle52);
+          titleArray.push(this.barchartdata.btitle53);
+          titleArray.push(this.barchartdata.btitle54);
+          titleArray.push(this.barchartdata.btitle55);
+          titleArray.push(this.barchartdata.btitle1);
+          legend1valueArray.push(this.barchartdata.bvalue201);
+          legend2valueArray.push(this.barchartdata.bvalue211);
+          legend3valueArray.push(this.barchartdata.bvalue221);
+          legend4valueArray.push(this.barchartdata.bvalue231);
+          legend5valueArray.push(this.barchartdata.bvalue241);
+        }
+      } else {
+        if(this.barchartdata.nobars >= 5){
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          titleArray.push(this.barchartdata.btitle4);
+          titleArray.push(this.barchartdata.btitle5);
+          // valueArray.push(this.barchartdata.bvalue11);
+          valueArray.push(this.barchartdata.bvalue1);
+          valueArray.push(this.barchartdata.bvalue2);
+          valueArray.push(this.barchartdata.bvalue3);
+          valueArray.push(this.barchartdata.bvalue4);
+          valueArray.push(this.barchartdata.bvalue5);
+        } else if ( this.barchartdata.nobars >= 4) {
+          // valueArray.push(this.barchartdata.bvalue21);
+          // valueArray.push(this.barchartdata.bvalue22);
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          titleArray.push(this.barchartdata.btitle4);
+          valueArray.push(this.barchartdata.bvalue1);
+          valueArray.push(this.barchartdata.bvalue2);
+          valueArray.push(this.barchartdata.bvalue3);
+          valueArray.push(this.barchartdata.bvalue4);
+        } else if ( this.barchartdata.nobars >= 3) {
+          // valueArray.push(this.barchartdata.bvalue31);
+          // valueArray.push(this.barchartdata.bvalue32);
+          // valueArray.push(this.barchartdata.bvalue33);
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          titleArray.push(this.barchartdata.btitle3);
+          valueArray.push(this.barchartdata.bvalue1);
+          valueArray.push(this.barchartdata.bvalue2);
+          valueArray.push(this.barchartdata.bvalue3);
+        } else if ( this.barchartdata.nobars >= 2) {
+          // valueArray.push(this.barchartdata.bvalue41);
+          // valueArray.push(this.barchartdata.bvalue42);
+          titleArray.push(this.barchartdata.btitle1);
+          titleArray.push(this.barchartdata.btitle2);
+          valueArray.push(this.barchartdata.bvalue1);
+          valueArray.push(this.barchartdata.bvalue2);
+        } else if ( this.barchartdata.nobars >= 1) {
+          // valueArray.push(this.barchartdata.bvalue51);
+          titleArray.push(this.barchartdata.btitle1);
+          valueArray.push(this.barchartdata.bvalue1);
+        }
       }
+      
+
+      // console.log("LEGEND VALUE ARRAY", legend1valueArray);
+      // console.log("LEGEND VALUE ARRAY", legend2valueArray);
+      // console.log("Title ARRAY", titleArray);
 
       this.barChartOptions = {
         responsive: true,
@@ -124,23 +250,111 @@ export class BarchartComponent {
         }
       };
 
-      this.barChartData = {
-        labels: titleArray,
-        datasets: [
-          { data: valueArray, label: 'Bar-Chart of' }
-        ]
+      let legenddata1 = {
+        label: this.barchartdata.blegend1,
+        data: legend1valueArray,
+        borderColor: '#36A2EB',
+        backgroundColor: '#0070AD',
       };
 
+      let legenddata2 = {
+        label: this.barchartdata.blegend2,
+        data: legend2valueArray,
+        borderColor: '#FF6384',
+        backgroundColor: '#FFDA80',
+      };
+
+      let legenddata3 = {
+        label: this.barchartdata.blegend3,
+        data: legend3valueArray,
+        borderColor: '#FF6384',
+        backgroundColor: '#E557AD',
+      };
+      let legenddata4 = {
+        label: this.barchartdata.blegend4,
+        data: legend4valueArray,
+        borderColor: '#FF6384',
+        backgroundColor: '#FF5770',
+      };
+      let legenddata5 = {
+        label: this.barchartdata.blegend5,
+        data: legend5valueArray,
+        borderColor: '#FF6384',
+        backgroundColor: '#57CF80',
+      };
+
+      let realLegendDataset = [];
+      if(this.barchartdata.nolegends == 5) {
+        realLegendDataset.push(legenddata1);
+        realLegendDataset.push(legenddata2);
+        realLegendDataset.push(legenddata3);
+        realLegendDataset.push(legenddata4);
+        realLegendDataset.push(legenddata5);
+      } else if (this.barchartdata.nolegends == 4) {
+        realLegendDataset.push(legenddata1);
+        realLegendDataset.push(legenddata2);
+        realLegendDataset.push(legenddata3);
+        realLegendDataset.push(legenddata4);
+      } else if (this.barchartdata.nolegends == 3) {
+        realLegendDataset.push(legenddata1);
+        realLegendDataset.push(legenddata2);
+        realLegendDataset.push(legenddata3);
+      } else if (this.barchartdata.nolegends == 2) {
+        realLegendDataset.push(legenddata1);
+        realLegendDataset.push(legenddata2);
+      } else if (this.barchartdata.nolegends == 1) {
+        realLegendDataset.push(legenddata1);
+      }
+
+      this.columnChartData = {
+        labels: titleArray,
+        datasets: realLegendDataset,
+        // datasets: [
+        //   {
+        //     label: this.barchartdata.blegend1,
+        //     data: legend1valueArray,
+        //     borderColor: '#36A2EB',
+        //     backgroundColor: '#0070AD',
+        //   },
+        //   {
+        //     label: this.barchartdata.blegend2,
+        //     data: legend2valueArray,
+        //     borderColor: '#FF6384',
+        //     backgroundColor: '#FFDA80',
+        //   },
+        //   {
+        //     label: this.barchartdata.blegend3,
+        //     data: legend3valueArray,
+        //     borderColor: '#FF6384',
+        //     backgroundColor: '#E557AD',
+        //   },
+        //   {
+        //     label: this.barchartdata.blegend4,
+        //     data: legend4valueArray,
+        //     borderColor: '#FF6384',
+        //     backgroundColor: '#FF5770',
+        //   },
+        //   {
+        //     label: this.barchartdata.blegend5,
+        //     data: legend5valueArray,
+        //     borderColor: '#FF6384',
+        //     backgroundColor: '#57CF80',
+        //   }
+        // ]
+
+      };
+
+      let fillcolor = [ '#0070AD', '#FFDA80', '#E557AD', '#FF5770', '#57CF80'];
+
+      this.singleChartData = {   
+        labels: titleArray,
+        datasets: [
+          { data: valueArray, label: 'No Label', backgroundColor: fillcolor},
+        ]
+      };
     }
   }
 
-  // public barChartData: ChartData<'bar'> = {
-  //   labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
-  //   datasets: [
-  //     { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' },
-  //     { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' }
-  //   ]
-  // };
 
   public barChartPlugins = [
     DataLabelsPlugin

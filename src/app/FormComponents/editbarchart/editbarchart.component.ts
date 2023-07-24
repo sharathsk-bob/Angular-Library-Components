@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class EditbarchartComponent {
   title = "";
   nobars:any;
+  nolegends: any;
   barchartForm: FormGroup;
   submitted = false;
   barchartdata:any;
@@ -26,408 +27,1248 @@ export class EditbarchartComponent {
       this.barchartdata = JSON.parse(data1);
       console.log(">>>>>",this.barchartdata);
       this.nobars = this.barchartdata.nobars;
+      this.nolegends = this.barchartdata.nolegends;
     }
 
-    this.barchartForm = this.formBuilder.group({
-      nobars:[this.nobars ,[Validators.required]],
-      btitle11:[''],
-      bvalue11:[''],
-      btitle21:[''],
-      bvalue21:[''],
-      btitle22:[''],
-      bvalue22:[''],
-      btitle31:[''],
-      bvalue31:[''],
-      btitle32:[''],
-      bvalue32:[''],
-      btitle33:[''],
-      bvalue33:[''],
-      btitle41:[''],
-      bvalue41:[''],
-      btitle42:[''],
-      bvalue42:[''],
-      btitle43:[''],
-      bvalue43:[''],
-      btitle44:[''],
-      bvalue44:[''],
-      btitle51:[''],
-      bvalue51:[''],
-      btitle52:[''],
-      bvalue52:[''],
-      btitle53:[''],
-      bvalue53:[''],
-      btitle54:[''],
-      bvalue54:[''],
-      btitle55:[''],
-      bvalue55:[''],
+    this.barchartForm = this.formBuilder.group({ 
+      barchartType: ['', [Validators.required]],
+      nobars:['',[Validators.required]], 
+      nolegends:[''],
+
+      blegend1:[''],
+      blegend2:[''],
+      blegend3:[''],
+      blegend4:[''],
+      blegend5:[''],
+
+      // For single
+      btitle1:[''],
+      btitle2:[''],
+      btitle3:[''],
+      btitle4:[''],
+      btitle5:[''],
+      bvalue1:[''],
+      bvalue2:[''],
+      bvalue3:[''],
+      bvalue4:[''],
+      bvalue5:[''],
+
+      // For column
+      bvalue201:[''],
+      bvalue202:[''],
+      bvalue203:[''],
+      bvalue204:[''],
+      bvalue205:[''],
+
+      bvalue211:[''],
+      bvalue212:[''],
+      bvalue213:[''],
+      bvalue214:[''],
+      bvalue215:[''],
+      
+      bvalue221:[''],
+      bvalue222:[''],
+      bvalue223:[''],
+      bvalue224:[''],
+      bvalue225:[''],
+
+      bvalue231:[''],
+      bvalue232:[''],
+      bvalue233:[''],
+      bvalue234:[''],
+      bvalue235:[''],
+
+      bvalue241:[''],
+      bvalue242:[''],
+      bvalue243:[''],
+      bvalue244:[''],
+      bvalue245:[''],
 
       xaxistitle:['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       yaxistitle:['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
-      size: ['Small', [Validators.required]],
+      size: ['Small', [Validators.required]]
     });
 
-    this.barchartForm.get("nobars")?.valueChanges.subscribe((result)=>{
-      if(result == 1) {
-        this.barchartForm.get("btitle11")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue11")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
+    this.barchartForm.get("barchartType")?.valueChanges.subscribe((result)=>{
+      console.log("Yehi check hua????", result, "Damn kya hai ye");
+      if(result == 'Column') {
+        this.barchartForm.get("nolegends")?.setValidators([Validators.required]);
+        this.barchartForm.get("nobars")?.valueChanges.subscribe((result)=>{ 
+          if(result == 5){
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
 
-        this.barchartForm.get("btitle51")?.clearValidators();
-        this.barchartForm.get("bvalue51")?.clearValidators();
-        this.barchartForm.get("btitle52")?.clearValidators();
-        this.barchartForm.get("bvalue52")?.clearValidators();
-        this.barchartForm.get("btitle53")?.clearValidators();
-        this.barchartForm.get("bvalue53")?.clearValidators();
-        this.barchartForm.get("btitle54")?.clearValidators();
-        this.barchartForm.get("bvalue54")?.clearValidators();
-        this.barchartForm.get("btitle55")?.clearValidators();
-        this.barchartForm.get("bvalue55")?.clearValidators();
-        this.barchartForm.get("btitle51")?.setValue("");
-        this.barchartForm.get("bvalue51")?.setValue("");
-        this.barchartForm.get("btitle52")?.setValue("");
-        this.barchartForm.get("bvalue52")?.setValue("");
-        this.barchartForm.get("btitle53")?.setValue("");
-        this.barchartForm.get("bvalue53")?.setValue("");
-        this.barchartForm.get("btitle54")?.setValue("");
-        this.barchartForm.get("bvalue54")?.setValue("");
-        this.barchartForm.get("btitle55")?.setValue("");
-        this.barchartForm.get("bvalue55")?.setValue("");
+            this.barchartForm.get("nolegends")?.valueChanges.subscribe((result)=>{
+              if(result == 5) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue241")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue242")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue243")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue244")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue245")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+              } else if (result == 4) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 3) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle41")?.clearValidators();
-        this.barchartForm.get("bvalue41")?.clearValidators();
-        this.barchartForm.get("btitle42")?.clearValidators();
-        this.barchartForm.get("bvalue42")?.clearValidators();
-        this.barchartForm.get("btitle43")?.clearValidators();
-        this.barchartForm.get("bvalue43")?.clearValidators();
-        this.barchartForm.get("btitle44")?.clearValidators();
-        this.barchartForm.get("bvalue44")?.clearValidators();
-        this.barchartForm.get("btitle41")?.setValue("");
-        this.barchartForm.get("bvalue41")?.setValue("");
-        this.barchartForm.get("btitle42")?.setValue("");
-        this.barchartForm.get("bvalue42")?.setValue("");
-        this.barchartForm.get("btitle43")?.setValue("");
-        this.barchartForm.get("bvalue43")?.setValue("");
-        this.barchartForm.get("btitle44")?.setValue("");
-        this.barchartForm.get("bvalue44")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 2) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle31")?.clearValidators();
-        this.barchartForm.get("bvalue31")?.clearValidators();
-        this.barchartForm.get("btitle32")?.clearValidators();
-        this.barchartForm.get("bvalue32")?.clearValidators();
-        this.barchartForm.get("btitle33")?.clearValidators();
-        this.barchartForm.get("bvalue33")?.clearValidators();
-        this.barchartForm.get("btitle31")?.setValue("");
-        this.barchartForm.get("bvalue31")?.setValue("");
-        this.barchartForm.get("btitle32")?.setValue("");
-        this.barchartForm.get("bvalue32")?.setValue("");
-        this.barchartForm.get("btitle33")?.setValue("");
-        this.barchartForm.get("bvalue33")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 1) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue211")?.clearValidators();
+                this.barchartForm.get("bvalue212")?.clearValidators(); 
+                this.barchartForm.get("bvalue213")?.clearValidators();
+                this.barchartForm.get("bvalue214")?.clearValidators();
+                this.barchartForm.get("bvalue215")?.clearValidators();
+                this.barchartForm.get("bvalue211")?.setValue("");
+                this.barchartForm.get("bvalue212")?.setValue("");
+                this.barchartForm.get("bvalue213")?.setValue("");
+                this.barchartForm.get("bvalue214")?.setValue("");
+                this.barchartForm.get("bvalue215")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              }
+            });
 
-        this.barchartForm.get("btitle21")?.clearValidators();
-        this.barchartForm.get("bvalue21")?.clearValidators();
-        this.barchartForm.get("btitle22")?.clearValidators();
-        this.barchartForm.get("bvalue22")?.clearValidators();
-        this.barchartForm.get("btitle21")?.setValue("");
-        this.barchartForm.get("bvalue21")?.setValue("");
-        this.barchartForm.get("btitle22")?.setValue("");
-        this.barchartForm.get("bvalue22")?.setValue("");
-      } else if(result == 2){ 
-        this.barchartForm.get("btitle21")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue21")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle22")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue22")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
+          } else if (result == 4) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
 
-        this.barchartForm.get("btitle51")?.clearValidators();
-        this.barchartForm.get("bvalue51")?.clearValidators();
-        this.barchartForm.get("btitle52")?.clearValidators();
-        this.barchartForm.get("bvalue52")?.clearValidators();
-        this.barchartForm.get("btitle53")?.clearValidators();
-        this.barchartForm.get("bvalue53")?.clearValidators();
-        this.barchartForm.get("btitle54")?.clearValidators();
-        this.barchartForm.get("bvalue54")?.clearValidators();
-        this.barchartForm.get("btitle55")?.clearValidators();
-        this.barchartForm.get("bvalue55")?.clearValidators();
-        this.barchartForm.get("btitle51")?.setValue("");
-        this.barchartForm.get("bvalue51")?.setValue("");
-        this.barchartForm.get("btitle52")?.setValue("");
-        this.barchartForm.get("bvalue52")?.setValue("");
-        this.barchartForm.get("btitle53")?.setValue("");
-        this.barchartForm.get("bvalue53")?.setValue("");
-        this.barchartForm.get("btitle54")?.setValue("");
-        this.barchartForm.get("bvalue54")?.setValue("");
-        this.barchartForm.get("btitle55")?.setValue("");
-        this.barchartForm.get("bvalue55")?.setValue("");
+            this.barchartForm.get("nolegends")?.valueChanges.subscribe((result)=>{
+              if(result == 5) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue241")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue242")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue243")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue244")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue245")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+              } else if (result == 4) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 3) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle41")?.clearValidators();
-        this.barchartForm.get("bvalue41")?.clearValidators();
-        this.barchartForm.get("btitle42")?.clearValidators();
-        this.barchartForm.get("bvalue42")?.clearValidators();
-        this.barchartForm.get("btitle43")?.clearValidators();
-        this.barchartForm.get("bvalue43")?.clearValidators();
-        this.barchartForm.get("btitle44")?.clearValidators();
-        this.barchartForm.get("bvalue44")?.clearValidators();
-        this.barchartForm.get("btitle41")?.setValue("");
-        this.barchartForm.get("bvalue41")?.setValue("");
-        this.barchartForm.get("btitle42")?.setValue("");
-        this.barchartForm.get("bvalue42")?.setValue("");
-        this.barchartForm.get("btitle43")?.setValue("");
-        this.barchartForm.get("bvalue43")?.setValue("");
-        this.barchartForm.get("btitle44")?.setValue("");
-        this.barchartForm.get("bvalue44")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 2) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle31")?.clearValidators();
-        this.barchartForm.get("bvalue31")?.clearValidators();
-        this.barchartForm.get("btitle32")?.clearValidators();
-        this.barchartForm.get("bvalue32")?.clearValidators();
-        this.barchartForm.get("btitle33")?.clearValidators();
-        this.barchartForm.get("bvalue33")?.clearValidators();
-        this.barchartForm.get("btitle31")?.setValue("");
-        this.barchartForm.get("bvalue31")?.setValue("");
-        this.barchartForm.get("btitle32")?.setValue("");
-        this.barchartForm.get("bvalue32")?.setValue("");
-        this.barchartForm.get("btitle33")?.setValue("");
-        this.barchartForm.get("bvalue33")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 1) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue211")?.clearValidators();
+                this.barchartForm.get("bvalue212")?.clearValidators(); 
+                this.barchartForm.get("bvalue213")?.clearValidators();
+                this.barchartForm.get("bvalue214")?.clearValidators();
+                this.barchartForm.get("bvalue215")?.clearValidators();
+                this.barchartForm.get("bvalue211")?.setValue("");
+                this.barchartForm.get("bvalue212")?.setValue("");
+                this.barchartForm.get("bvalue213")?.setValue("");
+                this.barchartForm.get("bvalue214")?.setValue("");
+                this.barchartForm.get("bvalue215")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              }
+            });
+          } else if (result == 3) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
 
-        this.barchartForm.get("btitle11")?.clearValidators();
-        this.barchartForm.get("bvalue11")?.clearValidators();
-        this.barchartForm.get("btitle11")?.setValue("");
-        this.barchartForm.get("bvalue11")?.setValue("");
-      } else if(result == 3){
-        this.barchartForm.get("btitle31")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue31")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle32")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue32")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle33")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue33")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("nolegends")?.valueChanges.subscribe((result)=>{
+              if(result == 5) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue241")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue242")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue243")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue244")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue245")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+              } else if (result == 4) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 3) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle51")?.clearValidators();
-        this.barchartForm.get("bvalue51")?.clearValidators();
-        this.barchartForm.get("btitle52")?.clearValidators();
-        this.barchartForm.get("bvalue52")?.clearValidators();
-        this.barchartForm.get("btitle53")?.clearValidators();
-        this.barchartForm.get("bvalue53")?.clearValidators();
-        this.barchartForm.get("btitle54")?.clearValidators();
-        this.barchartForm.get("bvalue54")?.clearValidators();
-        this.barchartForm.get("btitle55")?.clearValidators();
-        this.barchartForm.get("bvalue55")?.clearValidators();
-        this.barchartForm.get("btitle51")?.setValue("");
-        this.barchartForm.get("bvalue51")?.setValue("");
-        this.barchartForm.get("btitle52")?.setValue("");
-        this.barchartForm.get("bvalue52")?.setValue("");
-        this.barchartForm.get("btitle53")?.setValue("");
-        this.barchartForm.get("bvalue53")?.setValue("");
-        this.barchartForm.get("btitle54")?.setValue("");
-        this.barchartForm.get("bvalue54")?.setValue("");
-        this.barchartForm.get("btitle55")?.setValue("");
-        this.barchartForm.get("bvalue55")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 2) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle41")?.clearValidators();
-        this.barchartForm.get("bvalue41")?.clearValidators();
-        this.barchartForm.get("btitle42")?.clearValidators();
-        this.barchartForm.get("bvalue42")?.clearValidators();
-        this.barchartForm.get("btitle43")?.clearValidators();
-        this.barchartForm.get("bvalue43")?.clearValidators();
-        this.barchartForm.get("btitle44")?.clearValidators();
-        this.barchartForm.get("bvalue44")?.clearValidators();
-        this.barchartForm.get("btitle41")?.setValue("");
-        this.barchartForm.get("bvalue41")?.setValue("");
-        this.barchartForm.get("btitle42")?.setValue("");
-        this.barchartForm.get("bvalue42")?.setValue("");
-        this.barchartForm.get("btitle43")?.setValue("");
-        this.barchartForm.get("bvalue43")?.setValue("");
-        this.barchartForm.get("btitle44")?.setValue("");
-        this.barchartForm.get("bvalue44")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 1) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue211")?.clearValidators();
+                this.barchartForm.get("bvalue212")?.clearValidators(); 
+                this.barchartForm.get("bvalue213")?.clearValidators();
+                this.barchartForm.get("bvalue214")?.clearValidators();
+                this.barchartForm.get("bvalue215")?.clearValidators();
+                this.barchartForm.get("bvalue211")?.setValue("");
+                this.barchartForm.get("bvalue212")?.setValue("");
+                this.barchartForm.get("bvalue213")?.setValue("");
+                this.barchartForm.get("bvalue214")?.setValue("");
+                this.barchartForm.get("bvalue215")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              }
+            });
+          } else if (result == 2) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
 
-        this.barchartForm.get("btitle21")?.clearValidators();
-        this.barchartForm.get("bvalue21")?.clearValidators();
-        this.barchartForm.get("btitle22")?.clearValidators();
-        this.barchartForm.get("bvalue22")?.clearValidators();
-        this.barchartForm.get("btitle21")?.setValue("");
-        this.barchartForm.get("bvalue21")?.setValue("");
-        this.barchartForm.get("btitle22")?.setValue("");
-        this.barchartForm.get("bvalue22")?.setValue("");
+            this.barchartForm.get("nolegends")?.valueChanges.subscribe((result)=>{
+              if(result == 5) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue241")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue242")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue243")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue244")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue245")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+              } else if (result == 4) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 3) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle11")?.clearValidators();
-        this.barchartForm.get("bvalue11")?.clearValidators();
-        this.barchartForm.get("btitle11")?.setValue("");
-        this.barchartForm.get("bvalue11")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 2) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-      } else if(result == 4){
-        this.barchartForm.get("btitle41")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue41")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle42")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue42")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle43")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue43")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle44")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue44")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 1) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue211")?.clearValidators();
+                this.barchartForm.get("bvalue212")?.clearValidators(); 
+                this.barchartForm.get("bvalue213")?.clearValidators();
+                this.barchartForm.get("bvalue214")?.clearValidators();
+                this.barchartForm.get("bvalue215")?.clearValidators();
+                this.barchartForm.get("bvalue211")?.setValue("");
+                this.barchartForm.get("bvalue212")?.setValue("");
+                this.barchartForm.get("bvalue213")?.setValue("");
+                this.barchartForm.get("bvalue214")?.setValue("");
+                this.barchartForm.get("bvalue215")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              }
+            });
+          } else if (result == 1) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
 
-        this.barchartForm.get("btitle51")?.clearValidators();
-        this.barchartForm.get("bvalue51")?.clearValidators();
-        this.barchartForm.get("btitle52")?.clearValidators();
-        this.barchartForm.get("bvalue52")?.clearValidators();
-        this.barchartForm.get("btitle53")?.clearValidators();
-        this.barchartForm.get("bvalue53")?.clearValidators();
-        this.barchartForm.get("btitle54")?.clearValidators();
-        this.barchartForm.get("bvalue54")?.clearValidators();
-        this.barchartForm.get("btitle55")?.clearValidators();
-        this.barchartForm.get("bvalue55")?.clearValidators();
-        this.barchartForm.get("btitle51")?.setValue("");
-        this.barchartForm.get("bvalue51")?.setValue("");
-        this.barchartForm.get("btitle52")?.setValue("");
-        this.barchartForm.get("bvalue52")?.setValue("");
-        this.barchartForm.get("btitle53")?.setValue("");
-        this.barchartForm.get("bvalue53")?.setValue("");
-        this.barchartForm.get("btitle54")?.setValue("");
-        this.barchartForm.get("bvalue54")?.setValue("");
-        this.barchartForm.get("btitle55")?.setValue("");
-        this.barchartForm.get("bvalue55")?.setValue("");
+            this.barchartForm.get("nolegends")?.valueChanges.subscribe((result)=>{
+              if(result == 5) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue241")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue242")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue243")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue244")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue245")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+              } else if (result == 4) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue231")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue232")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue233")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue234")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue235")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 3) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue221")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue222")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue223")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue224")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue225")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle31")?.clearValidators();
-        this.barchartForm.get("bvalue31")?.clearValidators();
-        this.barchartForm.get("btitle32")?.clearValidators();
-        this.barchartForm.get("bvalue32")?.clearValidators();
-        this.barchartForm.get("btitle33")?.clearValidators();
-        this.barchartForm.get("bvalue33")?.clearValidators();
-        this.barchartForm.get("btitle31")?.setValue("");
-        this.barchartForm.get("bvalue31")?.setValue("");
-        this.barchartForm.get("btitle32")?.setValue("");
-        this.barchartForm.get("bvalue32")?.setValue("");
-        this.barchartForm.get("btitle33")?.setValue("");
-        this.barchartForm.get("bvalue33")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 2) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("blegend2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue211")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue212")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue213")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue214")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue215")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle21")?.clearValidators();
-        this.barchartForm.get("bvalue21")?.clearValidators();
-        this.barchartForm.get("btitle22")?.clearValidators();
-        this.barchartForm.get("bvalue22")?.clearValidators();
-        this.barchartForm.get("btitle21")?.setValue("");
-        this.barchartForm.get("bvalue21")?.setValue("");
-        this.barchartForm.get("btitle22")?.setValue("");
-        this.barchartForm.get("bvalue22")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              } else if (result == 1) {
+                this.barchartForm.get("blegend1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+                this.barchartForm.get("bvalue201")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue202")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue203")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue204")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                this.barchartForm.get("bvalue205")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+                
+                this.barchartForm.get("bvalue211")?.clearValidators();
+                this.barchartForm.get("bvalue212")?.clearValidators(); 
+                this.barchartForm.get("bvalue213")?.clearValidators();
+                this.barchartForm.get("bvalue214")?.clearValidators();
+                this.barchartForm.get("bvalue215")?.clearValidators();
+                this.barchartForm.get("bvalue211")?.setValue("");
+                this.barchartForm.get("bvalue212")?.setValue("");
+                this.barchartForm.get("bvalue213")?.setValue("");
+                this.barchartForm.get("bvalue214")?.setValue("");
+                this.barchartForm.get("bvalue215")?.setValue("");
+                this.barchartForm.get("bvalue221")?.clearValidators();
+                this.barchartForm.get("bvalue222")?.clearValidators(); 
+                this.barchartForm.get("bvalue223")?.clearValidators();
+                this.barchartForm.get("bvalue224")?.clearValidators();
+                this.barchartForm.get("bvalue225")?.clearValidators();
+                this.barchartForm.get("bvalue221")?.setValue("");
+                this.barchartForm.get("bvalue222")?.setValue("");
+                this.barchartForm.get("bvalue223")?.setValue("");
+                this.barchartForm.get("bvalue224")?.setValue("");
+                this.barchartForm.get("bvalue225")?.setValue("");
+                this.barchartForm.get("bvalue231")?.clearValidators();
+                this.barchartForm.get("bvalue232")?.clearValidators(); 
+                this.barchartForm.get("bvalue233")?.clearValidators();
+                this.barchartForm.get("bvalue234")?.clearValidators();
+                this.barchartForm.get("bvalue235")?.clearValidators();
+                this.barchartForm.get("bvalue231")?.setValue("");
+                this.barchartForm.get("bvalue232")?.setValue("");
+                this.barchartForm.get("bvalue233")?.setValue("");
+                this.barchartForm.get("bvalue234")?.setValue("");
+                this.barchartForm.get("bvalue235")?.setValue("");
+                this.barchartForm.get("bvalue241")?.clearValidators();
+                this.barchartForm.get("bvalue242")?.clearValidators(); 
+                this.barchartForm.get("bvalue243")?.clearValidators();
+                this.barchartForm.get("bvalue244")?.clearValidators();
+                this.barchartForm.get("bvalue245")?.clearValidators();
+                this.barchartForm.get("bvalue241")?.setValue("");
+                this.barchartForm.get("bvalue242")?.setValue("");
+                this.barchartForm.get("bvalue243")?.setValue("");
+                this.barchartForm.get("bvalue244")?.setValue("");
+                this.barchartForm.get("bvalue245")?.setValue("");
+              }
+            });
+          }
+        });
+      } else if ( result == 'Single') {
+        this.barchartForm.get("nolegends")?.clearValidators();
+        this.barchartForm.get("nolegends")?.setValue("");
+        this.barchartForm.get("bvalue201")?.clearValidators();
+        this.barchartForm.get("bvalue202")?.clearValidators(); 
+        this.barchartForm.get("bvalue203")?.clearValidators();
+        this.barchartForm.get("bvalue204")?.clearValidators();
+        this.barchartForm.get("bvalue205")?.clearValidators();
+        this.barchartForm.get("bvalue201")?.setValue("");
+        this.barchartForm.get("bvalue202")?.setValue("");
+        this.barchartForm.get("bvalue203")?.setValue("");
+        this.barchartForm.get("bvalue204")?.setValue("");
+        this.barchartForm.get("bvalue205")?.setValue("");
+        this.barchartForm.get("bvalue211")?.clearValidators();
+        this.barchartForm.get("bvalue212")?.clearValidators(); 
+        this.barchartForm.get("bvalue213")?.clearValidators();
+        this.barchartForm.get("bvalue214")?.clearValidators();
+        this.barchartForm.get("bvalue215")?.clearValidators();
+        this.barchartForm.get("bvalue211")?.setValue("");
+        this.barchartForm.get("bvalue212")?.setValue("");
+        this.barchartForm.get("bvalue213")?.setValue("");
+        this.barchartForm.get("bvalue214")?.setValue("");
+        this.barchartForm.get("bvalue215")?.setValue("");
+        this.barchartForm.get("bvalue221")?.clearValidators();
+        this.barchartForm.get("bvalue222")?.clearValidators(); 
+        this.barchartForm.get("bvalue223")?.clearValidators();
+        this.barchartForm.get("bvalue224")?.clearValidators();
+        this.barchartForm.get("bvalue225")?.clearValidators();
+        this.barchartForm.get("bvalue221")?.setValue("");
+        this.barchartForm.get("bvalue222")?.setValue("");
+        this.barchartForm.get("bvalue223")?.setValue("");
+        this.barchartForm.get("bvalue224")?.setValue("");
+        this.barchartForm.get("bvalue225")?.setValue("");
+        this.barchartForm.get("bvalue231")?.clearValidators();
+        this.barchartForm.get("bvalue232")?.clearValidators(); 
+        this.barchartForm.get("bvalue233")?.clearValidators();
+        this.barchartForm.get("bvalue234")?.clearValidators();
+        this.barchartForm.get("bvalue235")?.clearValidators();
+        this.barchartForm.get("bvalue231")?.setValue("");
+        this.barchartForm.get("bvalue232")?.setValue("");
+        this.barchartForm.get("bvalue233")?.setValue("");
+        this.barchartForm.get("bvalue234")?.setValue("");
+        this.barchartForm.get("bvalue235")?.setValue("");
+        this.barchartForm.get("bvalue241")?.clearValidators();
+        this.barchartForm.get("bvalue242")?.clearValidators(); 
+        this.barchartForm.get("bvalue243")?.clearValidators();
+        this.barchartForm.get("bvalue244")?.clearValidators();
+        this.barchartForm.get("bvalue245")?.clearValidators();
+        this.barchartForm.get("bvalue241")?.setValue("");
+        this.barchartForm.get("bvalue242")?.setValue("");
+        this.barchartForm.get("bvalue243")?.setValue("");
+        this.barchartForm.get("bvalue244")?.setValue("");
+        this.barchartForm.get("bvalue245")?.setValue("");
 
-        this.barchartForm.get("btitle11")?.clearValidators();
-        this.barchartForm.get("bvalue11")?.clearValidators();
-        this.barchartForm.get("btitle11")?.setValue("");
-        this.barchartForm.get("bvalue11")?.setValue("");
-      } else if(result == 5){
-        this.barchartForm.get("btitle51")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue51")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle52")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue52")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle53")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue53")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle54")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue54")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
-        this.barchartForm.get("btitle55")?.setValidators([Validators.required,Validators.minLength(3), Validators.maxLength(15)]);
-        this.barchartForm.get("bvalue55")?.setValidators( [Validators.required, Validators.min(0), Validators.max(1000)]);
+        this.barchartForm.get("nobars")?.valueChanges.subscribe((result)=>{ 
+          if(result == 5){
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle5")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("bvalue1")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue2")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue3")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue4")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue5")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);         
+          } else if (result == 4) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle4")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("bvalue1")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue2")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue3")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue4")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle41")?.clearValidators();
-        this.barchartForm.get("bvalue41")?.clearValidators();
-        this.barchartForm.get("btitle42")?.clearValidators();
-        this.barchartForm.get("bvalue42")?.clearValidators();
-        this.barchartForm.get("btitle43")?.clearValidators();
-        this.barchartForm.get("bvalue43")?.clearValidators();
-        this.barchartForm.get("btitle44")?.clearValidators();
-        this.barchartForm.get("bvalue44")?.clearValidators();
-        this.barchartForm.get("btitle41")?.setValue("");
-        this.barchartForm.get("bvalue41")?.setValue("");
-        this.barchartForm.get("btitle42")?.setValue("");
-        this.barchartForm.get("bvalue42")?.setValue("");
-        this.barchartForm.get("btitle43")?.setValue("");
-        this.barchartForm.get("bvalue43")?.setValue("");
-        this.barchartForm.get("btitle44")?.setValue("");
-        this.barchartForm.get("bvalue44")?.setValue("");
+            this.barchartForm.get("btitle5")?.clearValidators();
+            this.barchartForm.get("btitle5")?.setValue("");
+            this.barchartForm.get("bvalue5")?.clearValidators();
+            this.barchartForm.get("bvalue5")?.setValue("");
+          } else if (result == 3) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle3")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("bvalue1")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue2")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue3")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle31")?.clearValidators();
-        this.barchartForm.get("bvalue31")?.clearValidators();
-        this.barchartForm.get("btitle32")?.clearValidators();
-        this.barchartForm.get("bvalue32")?.clearValidators();
-        this.barchartForm.get("btitle33")?.clearValidators();
-        this.barchartForm.get("bvalue33")?.clearValidators();
-        this.barchartForm.get("btitle31")?.setValue("");
-        this.barchartForm.get("bvalue31")?.setValue("");
-        this.barchartForm.get("btitle32")?.setValue("");
-        this.barchartForm.get("bvalue32")?.setValue("");
-        this.barchartForm.get("btitle33")?.setValue("");
-        this.barchartForm.get("bvalue33")?.setValue("");
+            this.barchartForm.get("btitle4")?.clearValidators(); 
+            this.barchartForm.get("btitle5")?.clearValidators();
+            this.barchartForm.get("btitle4")?.setValue("");
+            this.barchartForm.get("btitle5")?.setValue("");
+            this.barchartForm.get("bvalue4")?.clearValidators(); 
+            this.barchartForm.get("bvalue5")?.clearValidators();
+            this.barchartForm.get("bvalue4")?.setValue("");
+            this.barchartForm.get("bvalue5")?.setValue("");
+          } else if ( result == 2) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("btitle2")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("bvalue1")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
+            this.barchartForm.get("bvalue2")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle21")?.clearValidators();
-        this.barchartForm.get("bvalue21")?.clearValidators();
-        this.barchartForm.get("btitle22")?.clearValidators();
-        this.barchartForm.get("bvalue22")?.clearValidators();
-        this.barchartForm.get("btitle21")?.setValue("");
-        this.barchartForm.get("bvalue21")?.setValue("");
-        this.barchartForm.get("btitle22")?.setValue("");
-        this.barchartForm.get("bvalue22")?.setValue("");
+            this.barchartForm.get("btitle3")?.clearValidators();
+            this.barchartForm.get("btitle4")?.clearValidators(); 
+            this.barchartForm.get("btitle5")?.clearValidators();
+            this.barchartForm.get("btitle3")?.setValue("");
+            this.barchartForm.get("btitle4")?.setValue("");
+            this.barchartForm.get("btitle5")?.setValue("");
+            this.barchartForm.get("bvalue3")?.clearValidators();
+            this.barchartForm.get("bvalue4")?.clearValidators(); 
+            this.barchartForm.get("bvalue5")?.clearValidators();
+            this.barchartForm.get("bvalue3")?.setValue("");
+            this.barchartForm.get("bvalue4")?.setValue("");
+            this.barchartForm.get("bvalue5")?.setValue("");
 
-        this.barchartForm.get("btitle11")?.clearValidators();
-        this.barchartForm.get("bvalue11")?.clearValidators();
-        this.barchartForm.get("btitle11")?.setValue("");
-        this.barchartForm.get("bvalue11")?.setValue("");
-      } else {
-        this.barchartForm.get("btitle51")?.clearValidators();
-        this.barchartForm.get("bvalue51")?.clearValidators();
-        this.barchartForm.get("btitle52")?.clearValidators();
-        this.barchartForm.get("bvalue52")?.clearValidators();
-        this.barchartForm.get("btitle53")?.clearValidators();
-        this.barchartForm.get("bvalue53")?.clearValidators();
-        this.barchartForm.get("btitle54")?.clearValidators();
-        this.barchartForm.get("bvalue54")?.clearValidators();
-        this.barchartForm.get("btitle55")?.clearValidators();
-        this.barchartForm.get("bvalue55")?.clearValidators();
-        this.barchartForm.get("btitle51")?.setValue("");
-        this.barchartForm.get("bvalue51")?.setValue("");
-        this.barchartForm.get("btitle52")?.setValue("");
-        this.barchartForm.get("bvalue52")?.setValue("");
-        this.barchartForm.get("btitle53")?.setValue("");
-        this.barchartForm.get("bvalue53")?.setValue("");
-        this.barchartForm.get("btitle54")?.setValue("");
-        this.barchartForm.get("bvalue54")?.setValue("");
-        this.barchartForm.get("btitle55")?.setValue("");
-        this.barchartForm.get("bvalue55")?.setValue("");
+          } else if (result == 1) {
+            this.barchartForm.get("btitle1")?.setValidators([Validators.required, Validators.minLength(3), Validators.maxLength(15)]);
+            this.barchartForm.get("bvalue1")?.setValidators([Validators.required, Validators.min(0), Validators.max(1000)]);
 
-        this.barchartForm.get("btitle41")?.clearValidators();
-        this.barchartForm.get("bvalue41")?.clearValidators();
-        this.barchartForm.get("btitle42")?.clearValidators();
-        this.barchartForm.get("bvalue42")?.clearValidators();
-        this.barchartForm.get("btitle43")?.clearValidators();
-        this.barchartForm.get("bvalue43")?.clearValidators();
-        this.barchartForm.get("btitle44")?.clearValidators();
-        this.barchartForm.get("bvalue44")?.clearValidators();
-        this.barchartForm.get("btitle41")?.setValue("");
-        this.barchartForm.get("bvalue41")?.setValue("");
-        this.barchartForm.get("btitle42")?.setValue("");
-        this.barchartForm.get("bvalue42")?.setValue("");
-        this.barchartForm.get("btitle43")?.setValue("");
-        this.barchartForm.get("bvalue43")?.setValue("");
-        this.barchartForm.get("btitle44")?.setValue("");
-        this.barchartForm.get("bvalue44")?.setValue("");
-
-        this.barchartForm.get("btitle31")?.clearValidators();
-        this.barchartForm.get("bvalue31")?.clearValidators();
-        this.barchartForm.get("btitle32")?.clearValidators();
-        this.barchartForm.get("bvalue32")?.clearValidators();
-        this.barchartForm.get("btitle33")?.clearValidators();
-        this.barchartForm.get("bvalue33")?.clearValidators();
-        this.barchartForm.get("btitle31")?.setValue("");
-        this.barchartForm.get("bvalue31")?.setValue("");
-        this.barchartForm.get("btitle32")?.setValue("");
-        this.barchartForm.get("bvalue32")?.setValue("");
-        this.barchartForm.get("btitle33")?.setValue("");
-        this.barchartForm.get("bvalue33")?.setValue("");
-
-        this.barchartForm.get("btitle21")?.clearValidators();
-        this.barchartForm.get("bvalue21")?.clearValidators();
-        this.barchartForm.get("btitle22")?.clearValidators();
-        this.barchartForm.get("bvalue22")?.clearValidators();
-        this.barchartForm.get("btitle21")?.setValue("");
-        this.barchartForm.get("bvalue21")?.setValue("");
-        this.barchartForm.get("btitle22")?.setValue("");
-        this.barchartForm.get("bvalue22")?.setValue("");
-
-        this.barchartForm.get("btitle11")?.clearValidators();
-        this.barchartForm.get("bvalue11")?.clearValidators();
-        this.barchartForm.get("btitle11")?.setValue("");
-        this.barchartForm.get("bvalue11")?.setValue("");
+            this.barchartForm.get("btitle2")?.clearValidators();
+            this.barchartForm.get("btitle3")?.clearValidators();
+            this.barchartForm.get("btitle4")?.clearValidators(); 
+            this.barchartForm.get("btitle5")?.clearValidators();
+            this.barchartForm.get("btitle2")?.setValue("");
+            this.barchartForm.get("btitle3")?.setValue("");
+            this.barchartForm.get("btitle4")?.setValue("");
+            this.barchartForm.get("btitle5")?.setValue("");
+            this.barchartForm.get("bvalue2")?.clearValidators();
+            this.barchartForm.get("bvalue3")?.clearValidators();
+            this.barchartForm.get("bvalue4")?.clearValidators(); 
+            this.barchartForm.get("bvalue5")?.clearValidators();
+            this.barchartForm.get("bvalue2")?.setValue("");
+            this.barchartForm.get("bvalue3")?.setValue("");
+            this.barchartForm.get("bvalue4")?.setValue("");
+            this.barchartForm.get("bvalue5")?.setValue("");
+          }
+        });
       }
     });
 
@@ -435,11 +1276,11 @@ export class EditbarchartComponent {
 
   reloadComponent(self:boolean,urlToNavigateTo ?:string){
     //skipLocationChange:true means dont update the url to / when navigating
-   const url=self ? this.router.url : "component/barchart";
-   this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
-     this.router.navigate([`/${url}`]).then(()=>{
-      //  console.log(`After navigation I am on:${this.router.url}`)
-     })
+    const url=self ? this.router.url : "component/barchart";
+    this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{
+      this.router.navigate([`/${url}`]).then(()=>{
+        //  console.log(`After navigation I am on:${this.router.url}`)
+      })
    })
   }
 
@@ -449,6 +1290,7 @@ export class EditbarchartComponent {
 
   onSubmit(){ 
     this.submitted = true;
+    console.log(this.barchartForm);
     if(this.barchartForm.invalid) { 
       return true;
     }
@@ -457,37 +1299,54 @@ export class EditbarchartComponent {
 
       this.onclose.emit();
       const data = {
+        "barchartType":this.barchartForm.value.barchartType,
         "nobars":this.barchartForm.value.nobars,
-        "btitle11":this.barchartForm.value.btitle11,
-        "bvalue11":this.barchartForm.value.bvalue11,
-        "btitle21":this.barchartForm.value.btitle21,
-        "bvalue21":this.barchartForm.value.bvalue21,
-        "btitle22":this.barchartForm.value.btitle22,
-        "bvalue22":this.barchartForm.value.bvalue22,
-        "btitle31":this.barchartForm.value.btitle31,
-        "bvalue31":this.barchartForm.value.bvalue31,
-        "btitle32":this.barchartForm.value.btitle32,
-        "bvalue32":this.barchartForm.value.bvalue32,
-        "btitle33":this.barchartForm.value.btitle33,
-        "bvalue33":this.barchartForm.value.bvalue33,
-        "btitle41":this.barchartForm.value.btitle41,
-        "bvalue41":this.barchartForm.value.bvalue41,
-        "btitle42":this.barchartForm.value.btitle42,
-        "bvalue42":this.barchartForm.value.bvalue42,
-        "btitle43":this.barchartForm.value.btitle43,
-        "bvalue43":this.barchartForm.value.bvalue43,
-        "btitle44":this.barchartForm.value.btitle44,
-        "bvalue44":this.barchartForm.value.bvalue44,
-        "btitle51":this.barchartForm.value.btitle51,
-        "bvalue51":this.barchartForm.value.bvalue51,
-        "btitle52":this.barchartForm.value.btitle52,
-        "bvalue52":this.barchartForm.value.bvalue52,
-        "btitle53":this.barchartForm.value.btitle53,
-        "bvalue53":this.barchartForm.value.bvalue53,
-        "btitle54":this.barchartForm.value.btitle54,
-        "bvalue54":this.barchartForm.value.bvalue54,
-        "btitle55":this.barchartForm.value.btitle55,
-        "bvalue55":this.barchartForm.value.bvalue55,
+        "nolegends":this.barchartForm.value.nolegends,
+
+        "blegend1":this.barchartForm.value.blegend1,
+        "blegend2":this.barchartForm.value.blegend2,
+        "blegend3":this.barchartForm.value.blegend3,
+        "blegend4":this.barchartForm.value.blegend4,
+        "blegend5":this.barchartForm.value.blegend5,
+
+        "btitle1":this.barchartForm.value.btitle1,
+        "btitle2":this.barchartForm.value.btitle2,
+        "btitle3":this.barchartForm.value.btitle3,
+        "btitle4":this.barchartForm.value.btitle4,
+        "btitle5":this.barchartForm.value.btitle5,
+
+        "bvalue1":this.barchartForm.value.bvalue1,
+        "bvalue2":this.barchartForm.value.bvalue2,
+        "bvalue3":this.barchartForm.value.bvalue3,
+        "bvalue4":this.barchartForm.value.bvalue4,
+        "bvalue5":this.barchartForm.value.bvalue5,
+
+        "bvalue201":this.barchartForm.value.bvalue201,
+        "bvalue202":this.barchartForm.value.bvalue202,
+        "bvalue203":this.barchartForm.value.bvalue203,
+        "bvalue204":this.barchartForm.value.bvalue204,
+        "bvalue205":this.barchartForm.value.bvalue205,
+        "bvalue211":this.barchartForm.value.bvalue211,
+        "bvalue212":this.barchartForm.value.bvalue212,
+        "bvalue213":this.barchartForm.value.bvalue213,
+        "bvalue214":this.barchartForm.value.bvalue214,
+        "bvalue215":this.barchartForm.value.bvalue215,
+        "bvalue221":this.barchartForm.value.bvalue221,
+        "bvalue222":this.barchartForm.value.bvalue222,
+        "bvalue223":this.barchartForm.value.bvalue223,
+        "bvalue224":this.barchartForm.value.bvalue224,
+        "bvalue225":this.barchartForm.value.bvalue225,
+        "bvalue231":this.barchartForm.value.bvalue231,
+        "bvalue232":this.barchartForm.value.bvalue232,
+        "bvalue233":this.barchartForm.value.bvalue233,
+        "bvalue234":this.barchartForm.value.bvalue234,
+        "bvalue235":this.barchartForm.value.bvalue235,
+        "bvalue241":this.barchartForm.value.bvalue241,
+        "bvalue242":this.barchartForm.value.bvalue242,
+        "bvalue243":this.barchartForm.value.bvalue243,
+        "bvalue244":this.barchartForm.value.bvalue244,
+        "bvalue245":this.barchartForm.value.bvalue245,
+
         "xaxistitle":this.barchartForm.value.xaxistitle,
         "yaxistitle":this.barchartForm.value.yaxistitle,
         "size":this.barchartForm.value.size
