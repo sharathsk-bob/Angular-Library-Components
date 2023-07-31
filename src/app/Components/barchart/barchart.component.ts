@@ -25,7 +25,26 @@ export class BarchartComponent {
   bgcolor:any;
   color:any;
   Copy="Copy";
-  CSS=`
+  CSS=`.barchart-mdcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 650px;
+    max-width: 650px;
+}
+
+.barchart-smcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.barchart-lgcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 800px;
+    max-width: 800px;
+}
   `;
 
   @ViewChild('myModalClose15') modalClose1:any;
