@@ -9,18 +9,34 @@
         </div> 
     </div>
         <!-- <p>barchart works!</p> -->
-        <div #barchart class="drawer-content">
-
-        
-
+        <div *ngIf="barchartdata.barchartType=='Column'">
+            <div #barchart [ngClass]="[barchartdata.size=='Small'?'barchart-smcontent': barchartdata.size=='Medium'?'barchart-mdcontent':barchartdata.size=='Large'?'barchart-lgcontent':'']">
+                <canvas baseChart class="chart"
+                    [data]="columnChartData"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [type]="barChartType">
+                </canvas> 
+            </div>
         </div>
 
-        <!-- <ul class="list-inline">
+        <div *ngIf="barchartdata.barchartType=='Single'">
+            <div #barchart [ngClass]="[barchartdata.size=='Small'?'barchart-smcontent': barchartdata.size=='Medium'?'barchart-mdcontent':barchartdata.size=='Large'?'barchart-lgcontent':'']">
+                <canvas baseChart class="chart"
+                    [data]="singleChartData"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [type]="barChartType">
+                </canvas> 
+            </div>
+        </div>
+
+        <ul class="list-inline">
             <li (click)="openhtml()"><button [class]="htmlcontent">HTML</button></li>
             <li (click)="opencss()"><button [class]="csscontent">CSS</button></li>
-        </ul> -->
+        </ul>
         
-        <!-- <div class="htmlelement" *ngIf="htmlcontent == 'active'">
+        <div class="htmlelement" *ngIf="htmlcontent == 'active'">
             <div class="copybutton">
                 <button ngxClipboard [cbContent]="getHtmlContent()" (click)="copy()"><i class="fa fa-copy copyicon"></i>{{Copy}}</button>
             </div>
@@ -31,7 +47,7 @@
                 <button ngxClipboard [cbContent]="CSS" (click)="copy()"><i class="fa fa-copy copyicon"></i>{{Copy}}</button>
             </div>
             <pre><code [highlight]="CSS">{{CSS}}</code></pre>
-        </div> -->
+        </div>
 </div>
   
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="Bar chart Edit Modal" aria-hidden="true">

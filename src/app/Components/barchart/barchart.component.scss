@@ -1,0 +1,69 @@
+.barchart-mdcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 650px;
+    max-width: 650px;
+}
+
+.barchart-smcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 500px;
+    max-width: 500px;
+}
+
+.barchart-lgcontent {
+    margin: 16px auto;
+    padding: 16px 16px;
+    max-height: 800px;
+    max-width: 800px;
+}
+
+.list-inline {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    li:first-child {
+        margin-right: 10px;
+    }
+    li {
+        cursor: pointer;
+        button {
+            border: none;
+            background: transparent;
+            padding: 0px;
+        }
+    }
+}
+
+.htmlelement {
+    background-color: var(--color-white);
+    overflow-y: scroll;
+    width: 100%;
+    height: 350px;
+    margin: auto;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+
+.active{
+    border-bottom: 1px solid black !important;
+    padding-bottom: 5px !important;
+}
+
+.copybutton {
+    text-align: end;
+    margin-right: 40px;
+    margin-top: 30px;
+    button {
+      border: 1.5px solid black;
+      background: transparent;
+      border-radius: 10px;
+      padding: 5px 10px;
+    }
+    .copyicon {
+      margin-right: 5px;
+    }
+}
