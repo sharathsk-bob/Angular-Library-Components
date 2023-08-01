@@ -30,6 +30,7 @@ import { ErroroutputComponent } from './Components/erroroutput/erroroutput.compo
 import { PiechartComponent } from './Components/piechart/piechart.component';
 import { ChartsComponent } from './Components/charts/charts.component';
 import { BarchartComponent } from './Components/barchart/barchart.component';
+import { AreachartComponent } from './Components/areachart/areachart.component';
 
 const routes: Routes = [
  
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path : "component/charts", component:ChartsComponent},
   {path : "component/piechart", component:PiechartComponent},
   {path : "component/barchart", component:BarchartComponent},
+  {path : "component/areachart",component:AreachartComponent}
 ];
 
 @NgModule({

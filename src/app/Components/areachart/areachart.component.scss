@@ -1,0 +1,126 @@
+.areacanvas{
+    height: 450px !important;
+    width: 900px !important;
+    margin: auto;
+}
+.large{
+  height: 450px !important;
+  width: 1200px !important;
+}
+.medium{
+  height: 450px !important;
+  width: 900px !important;
+}
+.small{
+  height: 450px !important;
+  width: 600px !important;
+}
+.accordianmodal {
+    max-width: 50% !important;
+  }
+  .modal-dialog {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 100%;
+  }
+.htmlelement {
+    background-color: var(--color-white);
+    overflow-y: scroll;
+    width: 100%;
+    height: 350px;
+    margin: auto;
+    margin-top: 30px;
+    padding-top: 30px;
+  }
+  .active-accordian {
+    border-bottom: 1px solid black !important;
+    padding-bottom: 5px !important;
+  }
+  .copybutton {
+    text-align: end;
+    margin-right: 40px;
+    margin-top: 30px;
+    button {
+      border: 1.5px solid black;
+      background: transparent;
+      border-radius: 10px;
+      padding: 5px 10px;
+    }
+    .copyicon {
+      margin-right: 5px;
+    }
+  }
+  .list-inline {
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    li:first-child {
+      margin-right: 10px;
+    }
+    li {
+      cursor: pointer;
+      button {
+        border: none;
+        background: transparent;
+        padding: 0px;
+      }
+    }
+  }
+  @media only screen and (min-width: 767px) and (max-width: 1200px) {
+    .areacanvas{
+      height: 350px !important;
+      width: 600px !important;
+  }
+  .large{
+    height: 350px !important;
+      width: 600px !important;
+  }
+  .medium{
+    height: 350px !important;
+    width: 600px !important;
+  }
+  .small{
+    height: 350px !important;
+      width: 600px !important;
+  }
+  }
+  @media only screen and (min-width: 567px) and (max-width: 767px) {
+    .areacanvas{
+      height: 350px !important;
+      width: 400px !important;
+  }
+  .large{
+    height: 350px !important;
+    width: 400px !important;
+  }
+  .medium{
+    height: 350px !important;
+    width: 400px !important;
+  }
+  .small{
+    height: 350px !important;
+      width: 400px !important;
+  }
+  }
+  @media only screen and (min-width: 300px) and (max-width: 567px) {
+    .areacanvas{
+      height: 250px !important;
+      width: 300px !important;
+  }
+  .large{
+    height: 250px !important;
+    width: 300px !important;
+  }
+  .medium{
+    height: 250px !important;
+    width: 300px !important;
+  }
+  .small{
+    height: 250px !important;
+    width: 300px !important;
+  }
+  }

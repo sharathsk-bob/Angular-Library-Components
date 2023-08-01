@@ -1,0 +1,51 @@
+<div class="main">
+        <div #areachart class="container-liquid">
+      <div class="top-header">
+        <div class="insideheader">
+          <h4 class="subheader">Area Chart <span class="btncmp">Component</span></h4>
+        </div>
+        <div class="button-sec">  
+          <button class="backbutton" (click)="backwindow()">Back</button>
+          <button class="backbutton" data-bs-toggle="modal" data-bs-target="#exampleModal2">Edit</button>
+        </div>
+      </div>
+<canvas baseChart class="areacanvas"
+[ngClass]="areadata.symbol"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"
+></canvas>
+</div>
+<ul class="list-inline">
+  <li (click)="openhtml()"><button [class]="htmlcontent">HTML</button></li>
+  <li (click)="opencss()"><button [class]="csscontent">CSS</button></li>
+</ul>
+<div class="htmlelement" *ngIf="htmlcontent == 'active-accordian'">
+  <div class="copybutton">
+    <button ngxClipboard [cbContent]="getHtmlContent()" (click)="copy()"><i class="fa fa-copy copyicon"></i>{{Copy}}</button>
+  </div>
+  <pre><code [highlight]="getHtmlContent()">{{getHtmlContent()}}</code></pre>
+</div>
+<div class="htmlelement" *ngIf="csscontent == 'active-accordian'">
+  <div class="copybutton">
+    <button ngxClipboard [cbContent]="CSS" (click)="copy()"><i class="fa fa-copy copyicon"></i>{{Copy}}</button>
+  </div>
+  <pre><code [highlight]="CSS">{{CSS}}</code></pre>
+</div>
+</div>
+<div class=" formbutton modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel7"
+  aria-hidden="true">
+  <div class="accordianmodal modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4>Area Chart</h4>
+        <button class="clearbtn"  aria-label="Header Update modal close"  #myModalClose4 data-bs-dismiss="modal">
+          <img [src]="closeicon" class="closeicon">  
+      </button>
+      </div> 
+      <app-editareachart (onclose)="close()"></app-editareachart>
+      <!-- <app-editheader (onclose)="close()"></app-editheader>  -->
+    </div>
+  </div>
+</div>
+

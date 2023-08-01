@@ -90,6 +90,10 @@ import { ChartsComponent } from './Components/charts/charts.component';
 import { BarchartComponent } from './Components/barchart/barchart.component';
 import { BarchartformComponent } from './FormComponents/barchartform/barchartform.component';
 import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchart.component';
+import { AreachartComponent } from './Components/areachart/areachart.component';
+import { AreachartformComponent } from './FormComponents/areachartform/areachartform.component';
+import { EditareachartComponent } from './FormComponents/editareachart/editareachart.component';
+
 
 @NgModule({
   declarations: [
@@ -168,7 +172,10 @@ import { EditbarchartComponent } from './FormComponents/editbarchart/editbarchar
     ChartsComponent,
     BarchartComponent,
     BarchartformComponent,
-    EditbarchartComponent
+    EditbarchartComponent,
+    AreachartComponent,
+    AreachartformComponent,
+    EditareachartComponent
    
   ],
   imports: [

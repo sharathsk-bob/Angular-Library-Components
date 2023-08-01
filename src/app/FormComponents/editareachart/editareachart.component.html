@@ -1,0 +1,626 @@
+<div class="modal-body">
+    <p><b>Please fill the mandatory fields according your preference to design area chart</b> </p>
+
+    <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group pt-3">
+            <label>Single/Multiple:</label><span class="star">*</span>
+            <select [(ngModel)]="count" name="count" aria-label="select no of breakpoint layout" formControlName="count">
+                <option>Single</option>
+                <option>Multiple</option>
+            </select>
+            <div *ngIf="(f.count.touched || submitted) && f.count.errors" >
+                <div class="error" role="alert" aria-atomic="true"  *ngIf="f.count.errors.required">please select an option</div>
+            </div>
+        </div>
+        <div class="form-group pt-3" *ngIf="f.count.value === 'Single'">
+            <label>Legend Name:</label><span class="star">*</span>
+            <input [(ngModel)]="areadata.legendName" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendName" formControlName="legendName" [ngClass]="{ 'is-invalid': submitted && f.legendName.errors }" />
+            <div *ngIf="(f.legendName.touched || submitted) && f.legendName.errors">
+              <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendName.errors.required">Please enter legend name</div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.count.value === 'Single'">
+            <label>X Label:</label><span class="star">*</span>
+            <input [(ngModel)]="areadata.legendXlabel" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendXlabel" formControlName="legendXlabel" [ngClass]="{ 'is-invalid': submitted && f.legendXlabel.errors }" />
+            <div *ngIf="(f.legendXlabel.touched || submitted) && f.legendXlabel.errors">
+              <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendXlabel.errors.required">Please enter legend name</div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.count.value === 'Single'">
+            <label>Y Label:</label><span class="star">*</span>
+            <input [(ngModel)]="areadata.legendYlabel" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendYlabel" formControlName="legendYlabel" [ngClass]="{ 'is-invalid': submitted && f.legendYlabel.errors }" />
+            <div *ngIf="(f.legendYlabel.touched || submitted) && f.legendYlabel.errors">
+              <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendYlabel.errors.required">Please enter legend name</div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.count.value === 'Single'">
+            <label>Number of Values:</label><span class="star">*</span>
+            <select [(ngModel)]="values1" name="values1" aria-label="select no of breakpoint layout" formControlName="values1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+            <div *ngIf="(f.values1.touched || submitted) && f.values1.errors" >
+                <div class="error" role="alert" aria-atomic="true"  *ngIf="f.values1.errors.required">please select an option</div>
+            </div>
+        </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='1'&&f.count.value === 'Single'">
+            <label>Legend X Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1]">
+              <input  [(ngModel)]="areadata.legendValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendValuex" formControlName="legendValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValuex' + i].errors }" />
+              <div *ngIf="(f['legendValuex' + i].touched || submitted) && f['legendValuex' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.maxlength || f['legendValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='2'&&f.count.value === 'Single'">
+            <label>Legend X Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2]">
+              <input [(ngModel)]="areadata.legendValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendValuex" formControlName="legendValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValuex' + i].errors }" />
+              <div *ngIf="(f['legendValuex' + i].touched || submitted) && f['legendValuex' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.maxlength || f['legendValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='3'&&f.count.value === 'Single'">
+            <label>Legend X Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3]">
+              <input [(ngModel)]="areadata.legendValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendValuex" formControlName="legendValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValuex' + i].errors }" />
+              <div *ngIf="(f['legendValuex' + i].touched || submitted) && f['legendValuex' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.maxlength || f['legendValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='4'&&f.count.value === 'Single'">
+            <label>Legend X Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3,4]">
+              <input [(ngModel)]="areadata.legendValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendValuex" formControlName="legendValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValuex' + i].errors }" />
+              <div *ngIf="(f['legendValuex' + i].touched || submitted) && f['legendValuex' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.maxlength || f['legendValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='5'&&f.count.value === 'Single'">
+            <label>Legend X Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3,4,5]">
+              <input [(ngModel)]="areadata.legendValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendValuex" formControlName="legendValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValuex' + i].errors }" />
+              <div *ngIf="(f['legendValuex' + i].touched || submitted) && f['legendValuex' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValuex' + i].errors?.maxlength || f['legendValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+              </div>
+            </div>
+          </div>
+      
+          <div class="form-group pt-3" *ngIf="f.values1.value=='1'&&f.count.value === 'Single'">
+            <label>Legend Y Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1]">
+              <input [(ngModel)]="areadata.legendValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendValue" formControlName="legendValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValue' + i].errors }" />
+              <div *ngIf="(f['legendValue' + i].touched || submitted) && f['legendValue' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.min || f['legendValue' + i].errors?.max">Value must be between 1 and 1000</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='2'&&f.count.value === 'Single'">
+            <label>Legend Y Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1, 2]">
+              <input [(ngModel)]="areadata.legendValues[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendValue" formControlName="legendValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValue' + i].errors }" />
+              <div *ngIf="(f['legendValue' + i].touched || submitted) && f['legendValue' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.min || f['legendValue' + i].errors?.max">Value must be between 1 and 1000</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='3'&&f.count.value === 'Single'">
+            <label>Legend Y Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3]">
+              <input [(ngModel)]="areadata.legendValues[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendValue" formControlName="legendValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValue' + i].errors }" />
+              <div *ngIf="(f['legendValue' + i].touched || submitted) && f['legendValue' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.min || f['legendValue' + i].errors?.max">Value must be between 1 and 1000</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='4'&&f.count.value === 'Single'">
+            <label>Legend Y Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3,4]">
+              <input [(ngModel)]="areadata.legendValues[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendValue" formControlName="legendValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValue' + i].errors }" />
+              <div *ngIf="(f['legendValue' + i].touched || submitted) && f['legendValue' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.min || f['legendValue' + i].errors?.max">Value must be between 1 and 1000</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group pt-3" *ngIf="f.values1.value=='5'&&f.count.value === 'Single'">
+            <label>Legend Y Values:</label><span class="star">*</span>
+            <div *ngFor="let i of [1,2,3,4,5]">
+              <input [(ngModel)]="areadata.legendValues[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendValue" formControlName="legendValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendValue' + i].errors }" />
+              <div *ngIf="(f['legendValue' + i].touched || submitted) && f['legendValue' + i].errors">
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.required">Please enter legend value</div>
+                <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendValue' + i].errors?.min || f['legendValue' + i].errors?.max">Value must be between 1 and 1000</div>
+              </div>
+            </div>
+          </div>
+    <div class="form-group pt-3" *ngIf="f.count.value === 'Multiple'">
+        <label>Number of options:</label><span class="star">*</span>
+        <select [(ngModel)]="layout" name="nolayout" aria-label="select no of breakpoint layout" formControlName="nolayout">
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <div *ngIf="(f.nolayout.touched || submitted) && f.nolayout.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.nolayout.errors.required">please select an option</div>
+        </div>
+    </div>
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+      <label>Legend Name 1:</label><span class="star">*</span>
+      <input [(ngModel)]="areadata.legendMultipleName"  type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendMultipleName" formControlName="legendMultipleName" [ngClass]="{ 'is-invalid': submitted && f.legendMultipleName.errors }" />
+      <div *ngIf="(f.legendMultipleName.touched || submitted) && f.legendMultipleName.errors">
+        <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendMultipleName.errors.required">Please enter legend name</div>
+      </div>
+    </div>
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+      <label>Legend Name 2:</label><span class="star">*</span>
+      <input [(ngModel)]="areadata.legendMultiple1Name" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendMultiple1Name" formControlName="legendMultiple1Name" [ngClass]="{ 'is-invalid': submitted && f.legendMultiple1Name.errors }" />
+      <div *ngIf="(f.legendMultiple1Name.touched || submitted) && f.legendMultiple1Name.errors">
+        <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendMultiple1Name.errors.required">Please enter legend name</div>
+      </div>
+    </div>
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+      <label>X Label:</label><span class="star">*</span>
+      <input [(ngModel)]="areadata.legendXlabel2" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendXlabel2" formControlName="legendXlabel2" [ngClass]="{ 'is-invalid': submitted && f.legendXlabel2.errors }" />
+      <div *ngIf="(f.legendXlabel2.touched || submitted) && f.legendXlabel2.errors">
+        <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendXlabel2.errors.required">Please enter x value</div>
+      </div>
+    </div>
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+      <label>Y Label:</label><span class="star">*</span>
+      <input [(ngModel)]="areadata.legendYlabel2" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendYlabel2" formControlName="legendYlabel2" [ngClass]="{ 'is-invalid': submitted && f.legendYlabel2.errors }" />
+      <div *ngIf="(f.legendYlabel2.touched || submitted) && f.legendYlabel2.errors">
+        <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendYlabel2.errors.required">Please enter y value</div>
+      </div>
+    </div>
+    <div class="form-group pt-3" *ngIf="f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+      <label>Number of Values:</label><span class="star">*</span>
+      <select [(ngModel)]="values2" name="values2" aria-label="select no of breakpoint layout" formControlName="values2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+      </select>
+      <div *ngIf="(f.values2.touched || submitted) && f.values2.errors" >
+          <div class="error" role="alert" aria-atomic="true"  *ngIf="f.values2.errors.required">please select an option</div>
+      </div>
+  </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '1'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultipleValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultipleValuex" formControlName="legendMultipleValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValuex' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValuex' + i].touched || submitted) && f['legendMultipleValuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.maxlength || f['legendMultipleValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '2'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input [(ngModel)]="areadata.legendMultipleValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultipleValuex" formControlName="legendMultipleValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValuex' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValuex' + i].touched || submitted) && f['legendMultipleValuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.maxlength || f['legendMultipleValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '3'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input [(ngModel)]="areadata.legendMultipleValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultipleValuex" formControlName="legendMultipleValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValuex' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValuex' + i].touched || submitted) && f['legendMultipleValuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.maxlength || f['legendMultipleValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '4'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input [(ngModel)]="areadata.legendMultipleValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultipleValuex" formControlName="legendMultipleValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValuex' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValuex' + i].touched || submitted) && f['legendMultipleValuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.maxlength || f['legendMultipleValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '5'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultipleValuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultipleValuex" formControlName="legendMultipleValuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValuex' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValuex' + i].touched || submitted) && f['legendMultipleValuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValuex' + i].errors?.maxlength || f['legendMultipleValuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group pt-3" *ngIf="f.values2.value == '1'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultipleValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultipleValue" formControlName="legendMultipleValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValue' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValue' + i].touched || submitted) && f['legendMultipleValue' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.min || f['legendMultipleValue' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '2'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input [(ngModel)]="areadata.legendMultipleValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultipleValue" formControlName="legendMultipleValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValue' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValue' + i].touched || submitted) && f['legendMultipleValue' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.min || f['legendMultipleValue' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '3'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input [(ngModel)]="areadata.legendMultipleValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultipleValue" formControlName="legendMultipleValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValue' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValue' + i].touched || submitted) && f['legendMultipleValue' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.min || f['legendMultipleValue' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '4'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input [(ngModel)]="areadata.legendMultipleValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultipleValue" formControlName="legendMultipleValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValue' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValue' + i].touched || submitted) && f['legendMultipleValue' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.min || f['legendMultipleValue' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '5'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultipleValues[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultipleValue" formControlName="legendMultipleValue{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultipleValue' + i].errors }" />
+          <div *ngIf="(f['legendMultipleValue' + i].touched || submitted) && f['legendMultipleValue' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultipleValue' + i].errors?.min || f['legendMultipleValue' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group pt-3" *ngIf="f.values2.value == '1'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultiple1Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple1Value" formControlName="legendMultiple1Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple1Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple1Value' + i].touched || submitted) && f['legendMultiple1Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.min || f['legendMultiple1Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '2'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input [(ngModel)]="areadata.legendMultiple1Values[i-1]"   type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple1Value" formControlName="legendMultiple1Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple1Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple1Value' + i].touched || submitted) && f['legendMultiple1Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.min || f['legendMultiple1Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '3'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input [(ngModel)]="areadata.legendMultiple1Values[i-1]"   type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple1Value" formControlName="legendMultiple1Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple1Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple1Value' + i].touched || submitted) && f['legendMultiple1Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.min || f['legendMultiple1Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '4'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input [(ngModel)]="areadata.legendMultiple1Values[i-1]"   type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple1Value" formControlName="legendMultiple1Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple1Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple1Value' + i].touched || submitted) && f['legendMultiple1Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.min || f['legendMultiple1Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values2.value == '5'&&f.nolayout.value == '2'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultiple1Values[i-1]"   type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple1Value" formControlName="legendMultiple1Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple1Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple1Value' + i].touched || submitted) && f['legendMultiple1Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple1Value' + i].errors?.min || f['legendMultiple1Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Name 1:</label><span class="star">*</span>
+        <input [(ngModel)]="areadata.legendMultiple3Name"  type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendMultiple3Name" formControlName="legendMultiple3Name" [ngClass]="{ 'is-invalid': submitted && f.legendMultiple3Name.errors }" />
+        <div *ngIf="(f.legendMultiple3Name.touched || submitted) && f.legendMultiple3Name.errors">
+          <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendMultiple3Name.errors.required">Please enter legend name</div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Name 2:</label><span class="star">*</span>
+        <input [(ngModel)]="areadata.legendMultiple31Name" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendMultiple31Name" formControlName="legendMultiple31Name" [ngClass]="{ 'is-invalid': submitted && f.legendMultiple31Name.errors }" />
+        <div *ngIf="(f.legendMultiple31Name.touched || submitted) && f.legendMultiple31Name.errors">
+          <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendMultiple31Name.errors.required">Please enter legend name</div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Name 3:</label><span class="star">*</span>
+        <input [(ngModel)]="areadata.legendMultiple32Name" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendMultiple32Name" formControlName="legendMultiple32Name" [ngClass]="{ 'is-invalid': submitted && f.legendMultiple32Name.errors }" />
+        <div *ngIf="(f.legendMultiple32Name.touched || submitted) && f.legendMultiple32Name.errors">
+          <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendMultiple32Name.errors.required">Please enter legend name</div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>X Label:</label><span class="star">*</span>
+        <input [(ngModel)]="areadata.legendXlabel3" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendXlabel3" formControlName="legendXlabel3" [ngClass]="{ 'is-invalid': submitted && f.legendXlabel3.errors }" />
+        <div *ngIf="(f.legendXlabel3.touched || submitted) && f.legendXlabel3.errors">
+          <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendXlabel3.errors.required">Please enter x value</div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Y Label:</label><span class="star">*</span>
+        <input [(ngModel)]="areadata.legendYlabel3" type="text" maxlength="100" class="form-control inputbox" aria-required="true" placeholder="Please enter legend name" name="legendYlabel3" formControlName="legendYlabel3" [ngClass]="{ 'is-invalid': submitted && f.legendYlabel3.errors }" />
+        <div *ngIf="(f.legendYlabel3.touched || submitted) && f.legendYlabel3.errors">
+          <div class="error" role="alert" aria-atomic="true" *ngIf="f.legendYlabel3.errors.required">Please enter y value</div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Number of Values:</label><span class="star">*</span>
+        <select [(ngModel)]="values3" name="values3" aria-label="select no of breakpoint layout" formControlName="values3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <div *ngIf="(f.values3.touched || submitted) && f.values3.errors" >
+            <div class="error" role="alert" aria-atomic="true"  *ngIf="f.values3.errors.required">please select an option</div>
+        </div>
+    </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='1'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultiple3Valuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultiple3Valuex" formControlName="legendMultiple3Valuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Valuex' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Valuex' + i].touched || submitted) && f['legendMultiple3Valuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.maxlength || f['legendMultiple3Valuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='2'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input [(ngModel)]="areadata.legendMultiple3Valuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultiple3Valuex" formControlName="legendMultiple3Valuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Valuex' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Valuex' + i].touched || submitted) && f['legendMultiple3Valuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.maxlength || f['legendMultiple3Valuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='3'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input [(ngModel)]="areadata.legendMultiple3Valuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultiple3Valuex" formControlName="legendMultiple3Valuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Valuex' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Valuex' + i].touched || submitted) && f['legendMultiple3Valuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.maxlength || f['legendMultiple3Valuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='4'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input [(ngModel)]="areadata.legendMultiple3Valuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultiple3Valuex" formControlName="legendMultiple3Valuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Valuex' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Valuex' + i].touched || submitted) && f['legendMultiple3Valuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.maxlength || f['legendMultiple3Valuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='5'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend X Values:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultiple3Valuesx[i-1]" type="text" class="form-control inputbox" [placeholder]="'Valuex ' + i" name="legendMultiple3Valuex" formControlName="legendMultiple3Valuex{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Valuex' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Valuex' + i].touched || submitted) && f['legendMultiple3Valuex' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Valuex' + i].errors?.maxlength || f['legendMultiple3Valuex' + i].errors?.minlength">Value must be between 3 and 15</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group pt-3" *ngIf="f.values3.value=='1'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata['legendMultiple3Value' + i]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple3Value" formControlName="legendMultiple3Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Value' + i].touched || submitted) && f['legendMultiple3Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.min || f['legendMultiple3Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='2'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input  [(ngModel)]="areadata.legendMultiple3Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple3Value" formControlName="legendMultiple3Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Value' + i].touched || submitted) && f['legendMultiple3Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.min || f['legendMultiple3Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='3'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input  [(ngModel)]="areadata.legendMultiple3Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple3Value" formControlName="legendMultiple3Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Value' + i].touched || submitted) && f['legendMultiple3Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.min || f['legendMultiple3Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='4'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input  [(ngModel)]="areadata.legendMultiple3Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple3Value" formControlName="legendMultiple3Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Value' + i].touched || submitted) && f['legendMultiple3Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.min || f['legendMultiple3Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='5'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 1:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input  [(ngModel)]="areadata.legendMultiple3Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple3Value" formControlName="legendMultiple3Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple3Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple3Value' + i].touched || submitted) && f['legendMultiple3Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple3Value' + i].errors?.min || f['legendMultiple3Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-group pt-3" *ngIf="f.values3.value=='1'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultiple31Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple31Value" formControlName="legendMultiple31Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple31Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple31Value' + i].touched || submitted) && f['legendMultiple31Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.min || f['legendMultiple31Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='2'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input [(ngModel)]="areadata.legendMultiple31Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple31Value" formControlName="legendMultiple31Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple31Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple31Value' + i].touched || submitted) && f['legendMultiple31Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.min || f['legendMultiple31Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='3'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input [(ngModel)]="areadata.legendMultiple31Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple31Value" formControlName="legendMultiple31Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple31Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple31Value' + i].touched || submitted) && f['legendMultiple31Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.min || f['legendMultiple31Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='4'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input [(ngModel)]="areadata.legendMultiple31Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple31Value" formControlName="legendMultiple31Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple31Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple31Value' + i].touched || submitted) && f['legendMultiple31Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.min || f['legendMultiple31Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='5'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 2:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultiple31Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple31Value" formControlName="legendMultiple31Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple31Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple31Value' + i].touched || submitted) && f['legendMultiple31Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple31Value' + i].errors?.min || f['legendMultiple31Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      
+      
+      <div class="form-group pt-3" *ngIf="f.values3.value=='1'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 3:</label><span class="star">*</span>
+        <div *ngFor="let i of [1]">
+          <input [(ngModel)]="areadata.legendMultiple32Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple32Value" formControlName="legendMultiple32Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple32Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple32Value' + i].touched || submitted) && f['legendMultiple32Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.min || f['legendMultiple32Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='2'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 3:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2]">
+          <input  [(ngModel)]="areadata.legendMultiple32Values[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple32Value" formControlName="legendMultiple32Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple32Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple32Value' + i].touched || submitted) && f['legendMultiple32Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.min || f['legendMultiple32Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='3'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 3:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3]">
+          <input  [(ngModel)]="areadata.legendMultiple32Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple32Value" formControlName="legendMultiple32Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple32Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple32Value' + i].touched || submitted) && f['legendMultiple32Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.min || f['legendMultiple32Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='4'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 3:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4]">
+          <input  [(ngModel)]="areadata.legendMultiple32Values[i-1]"  type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple32Value" formControlName="legendMultiple32Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple32Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple32Value' + i].touched || submitted) && f['legendMultiple32Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.min || f['legendMultiple32Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group pt-3" *ngIf="f.values3.value=='5'&&f.nolayout.value == '3'&&f.count.value === 'Multiple'">
+        <label>Legend Y Values 3:</label><span class="star">*</span>
+        <div *ngFor="let i of [1,2,3,4,5]">
+          <input [(ngModel)]="areadata.legendMultiple32Values[i-1]" type="number" class="form-control inputbox" [placeholder]="'Value ' + i" name="legendMultiple32Value" formControlName="legendMultiple32Value{{i}}" [ngClass]="{ 'is-invalid': submitted && f['legendMultiple32Value' + i].errors }" />
+          <div *ngIf="(f['legendMultiple32Value' + i].touched || submitted) && f['legendMultiple32Value' + i].errors">
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.required">Please enter legend value</div>
+            <div class="error" role="alert" aria-atomic="true" *ngIf="f['legendMultiple32Value' + i].errors?.min || f['legendMultiple32Value' + i].errors?.max">Value must be between 1 and 1000</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-3">
+        <label class="accessbility">Please choose the size</label><span class="star">*</span>
+        <div class="form-group d-flex align-items-center shadow-sec background">
+            <select [(ngModel)]="areadata.symbol" class="symbol" name="symbol" aria-label="select symbol" formControlName="symbol">
+                <option>small</option>
+                <option>medium</option>
+                <option>large</option>
+            </select>
+        </div>
+    </div>
+
+
+   
+
+    <div class="footerbutton">
+        <button  class="submitbutton">
+            Update
+        </button>
+    </div>
+
+    </form>
+</div>

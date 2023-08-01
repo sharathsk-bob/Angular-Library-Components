@@ -14,7 +14,9 @@ export class ChartsComponent {
   
 @ViewChild("myModalClose") ModalClose:any;
 @ViewChild("myModalClose1") ModalClose1:any;
-@ViewChild("myModalClose2") ModalClose2:any
+@ViewChild("myModalClose2") ModalClose2:any;
+@ViewChild("myModalClose3") ModalClose3:any;
+@ViewChild("myModalClose4") ModalClose4:any;
 
 
  
@@ -22,6 +24,7 @@ export class ChartsComponent {
     {id:1,name:"Pie Chart"},
     {id:2,name:"Donut Chart"},
     {id:3,name:"Bar Chart"},
+    {id:4,name:"Area Chart"},
      
    
 
@@ -35,6 +38,8 @@ close(){
   this.ModalClose.nativeElement.click();
   this.ModalClose1.nativeElement.click();
   this.ModalClose2.nativeElement.click();
+  this.ModalClose3.nativeElement.click();
+  this.ModalClose4.nativeElement.click();
   
   
 }

@@ -41,6 +41,12 @@
                             <button aria-label="Bar Chart Create Button" class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal2">Create </button>
                         </div>
+                        <div class="button-sec" *ngIf="item?.id == 4">
+                            <button aria-label="Bar Chart Detail Button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal13">Details</button>
+                            <button aria-label="Bar Chart Create Button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal3">Create </button>
+                        </div>
                        
                            
                     </div>
@@ -135,7 +141,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Donut</h4>
-                    <button class="clearbtn" aria-label="close modal" #myModalClose1 data-bs-dismiss="modal">
+                    <button class="clearbtn" aria-label="close modal" #myModalClose2 data-bs-dismiss="modal">
                         <img [src]="closeicon">
                     </button>
                 </div>
@@ -177,7 +183,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4>Bar Chart</h4>
-                    <button class="clearbtn" aria-label="close modal" #myModalClose15 data-bs-dismiss="modal">
+                    <button class="clearbtn" aria-label="close modal" #myModalClose3 data-bs-dismiss="modal">
                         <img [src]="closeicon">
                     </button>
                 </div>
@@ -185,7 +191,45 @@
             </div>
         </div>
     </div>
+    <div class="modal fade details" id="exampleModal13" tabindex="-1" aria-labelledby="Bar chart Details Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Area Chart</h4>
+                    <button class="clearbtn" aria-label="close detail" #myModalClose data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="details-container ">
+                        <h3> Details for the area chart section are below.</h3>
+                        <p class="pref">Please do follow the below given instructions while creating your area chart component.</p>
+                        <div class="detail-content">
+                            <ul>
+                                <li>User can select single or multiple area chart.</li>
+                                <li>User can select the Legend name for each chart</li>
+                                <li>User can select the y-axis values(1-1000) and x-axis values(3-15 characters)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="Bar chart Create Modal" aria-hidden="true">
+        <div class="modal-dialog modaldialog-width">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Area Chart</h4>
+                    <button class="clearbtn" aria-label="close modal" #myModalClose4 data-bs-dismiss="modal">
+                        <img [src]="closeicon">
+                    </button>
+                </div>
+                <app-areachartform (onclose)="close()"></app-areachartform>
+            </div>
+        </div>
+    </div>
 
 
     

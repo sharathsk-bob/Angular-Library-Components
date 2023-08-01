@@ -126,7 +126,7 @@ canvas{
       backgroundColor.push('#0070ad');
       labels.push(this.piedata.title32);
       values.push(this.piedata.description32);
-      backgroundColor.push('#2b0a3d');
+      backgroundColor.push('#78cb87');
       labels.push(this.piedata.title33);
       values.push(this.piedata.description33);
       backgroundColor.push('#e557ad');
