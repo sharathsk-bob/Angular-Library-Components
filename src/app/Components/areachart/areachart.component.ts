@@ -126,11 +126,11 @@ if(count=='Multiple'){
   console.log(this.areadata.legendMultipleName,this.areadata.legendMultipleValuesx)
     labels.push(this.areadata.legendMultipleName);
     values.push(this.areadata.legendMultipleValues);
-    bgcolor.push('#78cb87');
+    bgcolor.push('#78cb87ad');
     valuesx.push(this.areadata.legendMultipleValuesx);
     labels.push(this.areadata.legendMultiple1Name);
     values.push(this.areadata.legendMultiple1Values);
-    bgcolor.push('#0070ad');
+    bgcolor.push('#0070adad');
    // valuesx.push(this.areadata.legendMultiple1Valuesx);
     }else if(numOptions=='3'){
       this.xlabel=this.areadata.legendXlabel3;
@@ -138,13 +138,13 @@ if(count=='Multiple'){
       labels.push(this.areadata.legendMultiple3Name);
     values.push(this.areadata.legendMultiple3Values);
     valuesx.push(this.areadata.legendMultiple3Valuesx);
-    bgcolor.push('#ed6373');
+    bgcolor.push('#78cb8766');
     labels.push(this.areadata.legendMultiple31Name);
     values.push(this.areadata.legendMultiple31Values);
-    bgcolor.push('#0070ad');
+    bgcolor.push('#0070ad80');
     labels.push(this.areadata.legendMultiple32Name);
     values.push(this.areadata.legendMultiple32Values);
-    bgcolor.push('#e557ad');
+    bgcolor.push('#ed6373ad');
     }
   }else{
     numOptions = 1;
@@ -154,7 +154,7 @@ if(count=='Multiple'){
     labels.push(this.areadata.legendName);
     values.push(this.areadata.legendValues);
     valuesx.push(this.areadata.legendValuesx);
-    bgcolor.push('#0070ad');
+    bgcolor.push('#0070adad');
   }
   let labelsnew=labels.filter(elements => {
     return elements !== null;
@@ -175,7 +175,7 @@ if(count=='Multiple'){
     this.lineChartOptions={
       elements: {
         line: {
-          tension: 0
+          tension: 0.5
         }
       },
       responsive: true,
@@ -279,7 +279,7 @@ if(count=='Multiple'){
   public lineChartOptions: ChartConfiguration['options'] = {
     elements: {
       line: {
-        tension: 0
+        tension: 0.5
       }
     },
     responsive: true,
